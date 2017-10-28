@@ -17,10 +17,10 @@ class PagesController extends Controller
   }
   public function inventario()
   {
-      return view ('pages/inventario');
+      return view ('pages/itemFolder/inventario');
   }
   public function proveedores()
   {
-      return view ('pages/proveedores');
+      return view ('pages/providerFolder/proveedores');
   }
 }

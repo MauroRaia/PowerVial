@@ -12,7 +12,7 @@
 
   <div class="tab-content">
     <div id="createItem" class="tab-pane fade">
-        @include('posts.createItem')
+        @include('itemView.createItem')
     </div>
   </div>
 </div>

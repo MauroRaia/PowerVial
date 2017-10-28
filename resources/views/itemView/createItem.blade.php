@@ -8,8 +8,8 @@
       {{ Form::label('name', 'Nombre:') }}
       {{ Form::text('name', null, array('class' => 'form-control')) }}
       {{ Form::label('description', 'Descripcion:') }}
-      {{ Form::textarea('description', null, array('class' => 'form-control')) }}
-      {{Form::submit('Guardar item', array('class'=>'btn btn-primary btn-lg btn-block', 'style'=>'margin-top:20px;'))}}
+      {{ Form::textarea('description', null, array('class' => 'form-control', 'style' => 'height:100px')) }}
+      {{Form::submit('Guardar item', array('class'=>'btn btn-primary btn-lg btn-block', 'style'=>'margin-top:20px; margin-bottom:20px;'))}}
     {!! Form::close() !!}
   </div>
 </div>

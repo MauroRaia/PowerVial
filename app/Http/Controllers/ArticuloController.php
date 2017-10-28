@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ItemsController extends Controller
+class ArticuloController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +23,7 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        return view ('posts.createItem');
+        return view('articulo.createArticulo');
     }
 
     /**
@@ -32,20 +32,11 @@ class ItemsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeItem(Request $request)
+    public function store(Request $request)
     {
-        $this->validate('$request', array(
-          'code' => 'required|max:30',
-          'name' => 'required|max:50',
-          'description' => 'required'
-        ))
-        
-        $item = new Item;
-        $item->code = $request->code;
-        $item->name = $request->name;
-        $item->description = $request->description;
-        $item->save();
+      $articulo = Articulo::create($request->all());
 
+      return redirect('/inventario');
     }
 
     /**
@@ -67,7 +58,7 @@ class ItemsController extends Controller
      */
     public function edit($id)
     {
-        //
+      return view('articulo.editArticulo', ['articulo' => Articulo::findOrFail($id)]);
     }
 
     /**
@@ -79,7 +70,11 @@ class ItemsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $articulo = Articulo::find($id);
+      $articulo->fill($request->all());
+      $articulo->save();
+
+      return redirect('/inventario');
     }
 
     /**
@@ -90,6 +85,7 @@ class ItemsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $articulo = Articulo::find($id);
+      $articulo->delete();
     }
 }

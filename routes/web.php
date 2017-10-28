@@ -22,3 +22,4 @@ Route::get('/main', 'PagesController@main')->name('main');
 Route::get('/inventario', 'PagesController@inventario')->name('inventario');
 Route::get('/proveedores', 'PagesController@proveedores')->name('proveedores');
 Route::resource('items', 'ItemsController');
+Route::resource('providers', 'ProvidersController');
