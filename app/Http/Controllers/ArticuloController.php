@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CrearArticuloRequest;
+use App\Http\Requests\EditarArticuloRequest;
+use App\Articulo;
 
 class ArticuloController extends Controller
 {
@@ -88,4 +91,14 @@ class ArticuloController extends Controller
       $articulo = Articulo::find($id);
       $articulo->delete();
     }
+
+    public function descontarStock($id, $cantidad){
+
+      //$articulo = Articulo::find($id);
+      //$stockActual = $articulo->stock;
+      //$articulo->stock = $stockActual - $cantidad;
+      //$articulo->save();
+    }
+
+
 }

@@ -26,7 +26,7 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        return view('gets.createProveedor');
+        return view('proveedor.createProveedor');
     }
 
     /**
@@ -38,6 +38,8 @@ class ProveedorController extends Controller
     public function store(CrearProveedorRequest $request)
     {
         $proveedor = Proveedor::create($request->all());
+
+        return redirect('/inventario');
     }
 
     /**
@@ -48,7 +50,7 @@ class ProveedorController extends Controller
      */
     public function show($id)
     {
-        return view('gets.showProveedor', ['proveedor' => Proveedor::find($id)]);
+        return view('proveedor.showProveedor', ['proveedor' => Proveedor::find($id)]);
     }
 
     /**
@@ -59,7 +61,7 @@ class ProveedorController extends Controller
      */
     public function edit($id)
     {
-        return view('gets.editProveedor', ['proveedor' => Proveedor::find($id)]);
+        return view('proveedor.editProveedor', ['proveedor' => Proveedor::find($id)]);
     }
 
     /**

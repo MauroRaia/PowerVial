@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CrearSubfamiliaRequest;
+use App\Http\Requests\EditarSubfamiliaRequest;
+use App\SubFamilia;
 
 class SubfamiliaController extends Controller
 {
