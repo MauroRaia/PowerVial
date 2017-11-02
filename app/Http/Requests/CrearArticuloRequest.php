@@ -26,7 +26,7 @@ class CrearArticuloRequest extends FormRequest
         return [
           'codigo' => 'required|string|max:20',
           'nombre' => 'required|string|max:50',
-          'descripcion' => 'required|text',
+          'descripcion' => 'required|string',
           'categoria' => 'required|integer',
           'stock' => 'required|integer',
           'proveedor_id' => 'required',

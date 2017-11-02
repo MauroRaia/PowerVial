@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CrearSubfamiliaRequest;
 use App\Http\Requests\EditarSubfamiliaRequest;
 use App\SubFamilia;
+use App\Familia;
 
 class SubfamiliaController extends Controller
 {
@@ -26,7 +27,9 @@ class SubfamiliaController extends Controller
      */
     public function create()
     {
-        return view('subfamilia.createSubfamilia');
+        $familias = Familia::pluck('nombre', 'id');
+
+        return view('subfamilias.createSubfamilia', ['familias' => $familias]);
     }
 
     /**
@@ -39,7 +42,7 @@ class SubfamiliaController extends Controller
     {
       $subfamilia = Subfamilia::create($request->all());
 
-      return redirect('/inventario');
+      return redirect('/subfamilias/create');
     }
 
     /**
@@ -61,7 +64,8 @@ class SubfamiliaController extends Controller
      */
     public function edit($id)
     {
-        return view('subfamilia.editSubfamilia', ['subfamilia' => Subfamilia::findOrFail($id)]);
+        $familias = Familia::pluck('nombre', 'id');
+        return view('subfamilias.editSubfamilia', ['subfamilia' => Subfamilia::findOrFail($id), 'familias' => $familias]);
     }
 
     /**
@@ -74,10 +78,10 @@ class SubfamiliaController extends Controller
     public function update(EditarSubfamiliaRequest $request, $id)
     {
       $subfamilia = Subfamilia::find($id);
-      $Subfamilia->fill($request->all());
-      $Subfamilia->save();
+      $subfamilia->fill($request->all());
+      $subfamilia->save();
 
-      return redirect('/inventario');
+      return redirect('/subfamilias/create');
     }
 
     /**

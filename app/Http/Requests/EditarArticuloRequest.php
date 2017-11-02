@@ -26,8 +26,8 @@ class EditarArticuloRequest extends FormRequest
         return [
           'codigo' => 'required|string|max:20',
           'nombre' => 'required|string|max:50',
-          'descripcion' => 'required|text',
-          'categoria' => 'required|integer',
+          'descripcion' => 'required|string',
+          'categoria' => 'required',
           'stock' => 'required|integer',
           'proveedor_id' => 'required',
           'marca_id' => 'required',

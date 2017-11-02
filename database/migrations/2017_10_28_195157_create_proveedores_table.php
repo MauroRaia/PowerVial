@@ -16,8 +16,8 @@ class CreateProveedoresTable extends Migration
       Schema::create('proveedores', function (Blueprint $table) {
           $table->increments('id');
           $table->timestamps();
-          $table->enum('tipo_identificacion_fiscal', ['CUIT', 'CUIL']);
-          $table->integer('numero_identificacion_Fiscal')->unsigned();
+          $table->string('tipo_identificacion_fiscal');
+          $table->biginteger('numero_identificacion_fiscal')->unsigned();
           $table->string('razon_social', 125);
           $table->string('nombre_comercial', 100);
           $table->string('domicilio', 100);

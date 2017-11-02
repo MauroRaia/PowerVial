@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CrearArticuloRequest;
 use App\Http\Requests\EditarArticuloRequest;
 use App\Articulo;
+use App\Familia;
+use App\Proveedor;
+use App\SubFamilia;
+use App\Marca;
 
 class ArticuloController extends Controller
 {
@@ -26,7 +30,16 @@ class ArticuloController extends Controller
      */
     public function create()
     {
-        return view('articulo.createArticulo');
+        $proveedores = Proveedor::pluck('nombre_comercial','id');
+        $familias = Familia::pluck('nombre', 'id');
+        $subfamilias = SubFamilia::pluck('nombre', 'id');
+        $marcas = Marca::pluck('nombre', 'id');
+
+
+        return view('articulos.createArticulo', ['proveedores' => $proveedores,
+                                                'familias' => $familias,
+                                                'subfamilias' => $subfamilias,
+                                                'marcas' => $marcas]);
     }
 
     /**
@@ -35,11 +48,11 @@ class ArticuloController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CrearArticuloRequest $request)
     {
       $articulo = Articulo::create($request->all());
 
-      return redirect('/inventario');
+      return redirect('/articulos/create');
     }
 
     /**
@@ -61,7 +74,16 @@ class ArticuloController extends Controller
      */
     public function edit($id)
     {
-      return view('articulo.editArticulo', ['articulo' => Articulo::findOrFail($id)]);
+      $proveedores = Proveedor::pluck('nombre_comercial','id');
+      $familias = Familia::pluck('nombre', 'id');
+      $subfamilias = SubFamilia::pluck('nombre', 'id');
+      $marcas = Marca::pluck('nombre', 'id');
+      $articulo = Articulo::findOrFail($id);
+      return view('articulos.editArticulo', ['articulo' => $articulo,
+                                             'proveedores' => $proveedores,
+                                             'subfamilias' => $subfamilias,
+                                             'familias' => $familias,
+                                             'marcas' => $marcas]);
     }
 
     /**
@@ -71,13 +93,13 @@ class ArticuloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditarArticuloRequest $request, $id)
     {
       $articulo = Articulo::find($id);
       $articulo->fill($request->all());
       $articulo->save();
 
-      return redirect('/inventario');
+      return redirect('/articulos/create');
     }
 
     /**

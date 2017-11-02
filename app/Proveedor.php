@@ -12,5 +12,5 @@ class Proveedor extends Model
                            'nombre_comercial', 'domicilio', 'pais', 'provincia',
                            'localidad', 'codigo_postal', 'telefono', 'movil',
                            'fax', 'email', 'direccion_web'];
-    //
+
 }

@@ -24,8 +24,8 @@ class EditarProveedorRequest extends FormRequest
     public function rules()
     {
         return [
-          'tipo_identificacion_fiscal' => 'required',
-          'numero_identificacion_Fiscal' => 'required',
+          'tipo_identificacion_fiscal' => 'required|string',
+          'numero_identificacion_fiscal' => 'required',
           'razon_social' => 'required|string|max:125',
           'nombre_comercial' => 'required|string|max:100',
           'domicilio' => 'required|string|max:100',

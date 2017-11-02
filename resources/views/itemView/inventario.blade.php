@@ -7,12 +7,12 @@
 
 <div class="container">
   <ul class="nav nav-tabs">
-    <li><a data-toggle="tab" href="#createItem">Ingresar item</a></li>
+    <li><a data-toggle="tab" href="#createArticulo">Ingresar articulo</a></li>
   </ul>
 
   <div class="tab-content">
-    <div id="createItem" class="tab-pane fade">
-        @include('itemView.createItem')
+    <div id="createArticulo" class="tab-pane fade">
+        @include('articulos.createArticulo')
     </div>
   </div>
 </div>

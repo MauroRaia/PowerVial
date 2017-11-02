@@ -26,7 +26,8 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        return view('proveedor.createProveedor');
+        $tipos_identificacion_fiscal = ['cuit' => 'CUIT', 'cuil' => 'CUIL'];
+        return view('proveedores.createProveedor', ['tipos_identificacion_fiscal' => $tipos_identificacion_fiscal]);
     }
 
     /**
@@ -39,7 +40,7 @@ class ProveedorController extends Controller
     {
         $proveedor = Proveedor::create($request->all());
 
-        return redirect('/inventario');
+        return redirect('/proveedores/create');
     }
 
     /**
@@ -50,7 +51,7 @@ class ProveedorController extends Controller
      */
     public function show($id)
     {
-        return view('proveedor.showProveedor', ['proveedor' => Proveedor::find($id)]);
+        return view('proveedores.showProveedor', ['proveedor' => Proveedor::find($id)]);
     }
 
     /**
@@ -61,7 +62,8 @@ class ProveedorController extends Controller
      */
     public function edit($id)
     {
-        return view('proveedor.editProveedor', ['proveedor' => Proveedor::find($id)]);
+        $tipos_identificacion_fiscal = ['cuit' => 'CUIT', 'cuil' => 'CUIL'];
+        return view('proveedores.editProveedor', ['proveedor' => Proveedor::find($id), 'tipos_identificacion_fiscal' => $tipos_identificacion_fiscal]);
     }
 
     /**
@@ -89,7 +91,7 @@ class ProveedorController extends Controller
     public function destroy($id)
     {
       $proveedor = Proveedor::find($id);
-      $proveedor=>delete();
+      $proveedor->delete();
 
       return redirect('inventario');
     }
