@@ -1,3 +1,9 @@
+@extends('marcasNav')
+
+@section('navtab_4', 'class=active')
+
+@section('content-navtab')
+
 <div class='row'>
   <div class='col-md-8 col-md-offset-2'>
     <h3>Ingresar informacion de la marca</h3>
@@ -9,3 +15,5 @@
     {!! Form::close() !!}
   </div>
 </div>
+
+@endsection

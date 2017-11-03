@@ -13,4 +13,7 @@ class Proveedor extends Model
                            'localidad', 'codigo_postal', 'telefono', 'movil',
                            'fax', 'email', 'direccion_web'];
 
+    public function articulo(){
+      return $this->hasMany('App\Articulo');
+    }
 }

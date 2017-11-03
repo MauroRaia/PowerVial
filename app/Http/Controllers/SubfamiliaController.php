@@ -17,7 +17,7 @@ class SubfamiliaController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

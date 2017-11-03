@@ -10,6 +10,7 @@ use App\Familia;
 use App\Proveedor;
 use App\SubFamilia;
 use App\Marca;
+use Illuminate\Support\Facades\Schema;
 
 class ArticuloController extends Controller
 {
@@ -20,7 +21,38 @@ class ArticuloController extends Controller
      */
     public function index()
     {
-        //
+
+      $filtro = ['nombre' => 'Nombre',
+                 'familia_id' => 'Familia',
+                 'codigo' => 'Codigo'
+                ];
+
+      $articulos = Articulo::all();
+      return view('articulos.indexArticulo', ['art' => $articulos, 'filtro' => $filtro]);
+    }
+
+
+    public function find(Request $request)
+    {
+      $filtro = ['nombre' => 'Nombre',
+                 'familia_id' => 'Familia',
+                 'codigo' => 'Codigo'
+                ];
+
+      if (($request->input('field')) == 'familia_id') {
+        $value = Familia::where('nombre', ($request->input('value')) )->first();
+        $field = $request->input('field');
+
+        $articulos = Articulo::where($field, $value->id)->get();
+
+        return view('articulos.indexArticulo', ['art' => $articulos, 'filtro' => $filtro]);
+      }
+
+      $field = $request->input('field');
+      $value = $request->input('value');
+      $articulos = Articulo::where($field, $value)->get();
+
+      return view('articulos.indexArticulo', ['art' => $articulos, 'filtro' => $filtro]);
     }
 
     /**
@@ -30,16 +62,17 @@ class ArticuloController extends Controller
      */
     public function create()
     {
+        $familias = Familia::pluck('nombre','id');
         $proveedores = Proveedor::pluck('nombre_comercial','id');
-        $familias = Familia::pluck('nombre', 'id');
+        $marcas = Marca::pluck('nombre','id');
         $subfamilias = SubFamilia::pluck('nombre', 'id');
-        $marcas = Marca::pluck('nombre', 'id');
+
 
 
         return view('articulos.createArticulo', ['proveedores' => $proveedores,
                                                 'familias' => $familias,
-                                                'subfamilias' => $subfamilias,
-                                                'marcas' => $marcas]);
+                                                'marcas' => $marcas,
+                                                'subfamilias' => $subfamilias]);
     }
 
     /**

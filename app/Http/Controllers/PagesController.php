@@ -22,17 +22,18 @@ class PagesController extends Controller
   }
   public function inventario()
   {
-      $proveedores = Proveedor::pluck('nombre_comercial','id');
-      $familias = Familia::pluck('nombre', 'id');
-      $subfamilias = SubFamilia::pluck('nombre', 'id');
-      $marcas = Marca::pluck('nombre', 'id');
-      return view ('itemView/inventario', ['proveedores' => $proveedores,
-                                              'familias' => $familias,
-                                              'subfamilias' => $subfamilias,
-                                              'marcas' => $marcas]);
+      return view ('/inventario');
   }
-  public function proveedores()
+  public function proveedoresNav()
   {
-      return view ('pages/providerFolder/proveedores');
+      return view ('/proveedoresNav');
+  }
+
+  public function familiasNav(){
+    return view ('/familiasNav');
+  }
+
+  public function marcasNav(){
+    return view ('/marcasNav');
   }
 }

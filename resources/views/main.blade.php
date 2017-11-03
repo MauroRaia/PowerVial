@@ -8,13 +8,15 @@
 <body>
 
 <div class="jumbotron">
-    <h1>Prueba titulo 1</h1>
+    <h1>Inicio</h1>
 </div>
 
 @include('partials._navigation')
 
-<div class="container">
+<div class="col-md-12">
+  <div class='well well-lg'>
   @yield('content')
+  </div>
 </div>
 
 </div>

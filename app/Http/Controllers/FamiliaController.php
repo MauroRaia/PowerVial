@@ -37,4 +37,13 @@ class FamiliaController extends Controller
 
       return redirect('/inventario');
     }
+    public function index(){
+      $familias_all = Familia::all();
+      return view('familias.indexFamilia', ['fam' => $familias_all]);
+    }
+
+    public function show($id){
+
+      return view('familias.showFamilia', ['familia' => Familia::find($id)]);
+    }
 }

@@ -17,12 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/main', 'PagesController@main')->name('main');
-Route::get('/inventario', 'PagesController@inventario')->name('inventario');
-Route::get('/proveedores', 'PagesController@proveedores')->name('proveedores');
 Route::resource('articulos', 'ArticuloController');
 Route::resource('familias', 'FamiliaController');
 Route::resource('marcas', 'MarcaController');
 Route::resource('subfamilias', 'SubfamiliaController');
 Route::resource('proveedores', 'ProveedorController');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/main', 'PagesController@main')->name('main');
+Route::get('/inventario', 'PagesController@inventario')->name('inventario');
+Route::get('/proveedoresNav', 'PagesController@proveedoresNav')->name('proveedoresNav');
+Route::get('/familiasNav', 'PagesController@familiasNav')->name('familiasNav');
+Route::post('articulo/find', 'ArticuloController@find')->name('articulos.find');
+Route::get('/marcasNav', 'PagesController@marcasNav')->name('marcasNav');

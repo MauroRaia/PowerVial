@@ -1,3 +1,11 @@
+@extends('inventario')
+
+@section('navtab_2', 'class=active')
+
+@section('content-navtab')
+
+
+
 <div class='row'>
   <div class='col-md-8 col-md-offset-2'>
     <h3>Ingresar informacion del articulo</h3>
@@ -18,12 +26,15 @@
       {{ Form::label('marca_id', 'Marca:') }}
       {{ Form::select('marca_id', $marcas, array('class' => 'form-control')) }}
       {{ Form::label('familia_id', 'Familia:') }}
-      {{ Form::select('familia_id', $familias, array('class' => 'form-control')) }}
-      {{ Form::label('subfamilia_id', 'Subfamilia:') }}
-      {{ Form::select('subfamilia_id', $subfamilias, array('class' => 'form-control')) }}
+      {{ Form::select('familia_id', $familias, array('class' => 'form-control', 'id' => 'familia_in_form', 'onchange' => 'changeSubfamilia(this.value)')) }}
+      <br>
+        {{ Form::label('subfamilia_id', 'Subfamilia:') }}
+        {{ Form::select('subfamilia_id', $subfamilias, array('class' => 'form-control')) }}
       {{Form::submit('Guardar articulo', array('class'=>'btn btn-primary btn-lg btn-block', 'style'=>'margin-top:20px; margin-bottom:20px;'))}}
     {!! Form::close() !!}
 
-
   </div>
 </div>
+
+
+@endsection
