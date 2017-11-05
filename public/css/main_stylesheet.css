@@ -1,3 +1,28 @@
+.btn-show{
+  background-color: #0B3861;
+  color: #FAFAFA;
+}
+.btn-show:hover, .btn-show:focus, .btn-show:active, .btn-show.active, .open>.dropdown-toggle.btn-show {
+    color: #FAFAFA;
+    background-color: #191919;
+    border-color: #0B3861; /*set the color you want here*/
+}
+
+select.selectpicker{
+  height: 35px;
+  width: 100%;
+}
+
+.modal-header .close{
+  color: #000000;
+}
+
+.panel-default > .panel-heading{
+  background-color: #0B3861;
+  color: #FAFAFA;
+  border-color: #0B3861;
+}
+
 hr {
     display: block;
     margin-top: 0.5em;
@@ -23,11 +48,17 @@ label{
 
 .table tbody tr td, .table tbody tr th{
   background-color: #FAFAFA;
+  border-color: #0B3861;
 }
 
 .table thead tr td, .table thead tr th{
   background-color: #0B3861;
   color: #FAFAFA;
+  border-color: #0B3861;
+}
+
+.table{
+  border-color: #0B3861;
 }
 
 body,html{

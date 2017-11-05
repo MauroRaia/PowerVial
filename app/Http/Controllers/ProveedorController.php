@@ -81,7 +81,7 @@ class ProveedorController extends Controller
       $proveedor->fill($request->all());
       $proveedor->save();
 
-      return redirect('inventario');
+      return redirect('/proveedores');
     }
 
     /**

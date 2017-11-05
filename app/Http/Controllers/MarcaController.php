@@ -27,13 +27,19 @@ class MarcaController extends Controller
       $marca->fill($request->all());
       $marca->save();
 
-      return redirect('inventario');
+      return redirect('marcas');
     }
 
     public function destroy($id){
       $marca = Marca::find($id);
       $marca->delete();
 
-      return redirect('inventario');
+      return redirect('marcas');
+    }
+
+    public function index(){
+      $marcas = Marca::all();
+
+      return view('marcas.indexMarca', ['marc' => $marcas]);
     }
 }

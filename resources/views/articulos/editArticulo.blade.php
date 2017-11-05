@@ -1,14 +1,20 @@
+@extends('inventario')
+
+@section('navtab_2', 'class=active')
+
+@section('content-navtab')
+
 <div class='row'>
   <div class='col-md-8 col-md-offset-2'>
     <h3>Editar informacion del articulo</h3>
     <hr>
     {!! Form::open(array('route' => ['articulos.update', $articulo->id], 'method' => 'put')) !!}
       {{ Form::label('codigo', 'Codigo:') }}
-      {{ Form::text('code', $articulo->codigo, array('class' => 'form-control')) }}
+      {{ Form::text('codigo', $articulo->codigo, array('class' => 'form-control')) }}
       {{ Form::label('nombre', 'Nombre:') }}
-      {{ Form::text('name', $articulo->nombre, array('class' => 'form-control')) }}
+      {{ Form::text('nombre', $articulo->nombre, array('class' => 'form-control')) }}
       {{ Form::label('descripcion', 'Descripcion:') }}
-      {{ Form::textarea('description', $articulo->descripcion, array('class' => 'form-control', 'style' => 'height:100px')) }}
+      {{ Form::textarea('descripcion', $articulo->descripcion, array('class' => 'form-control', 'style' => 'height:100px')) }}
       {{ Form::label('categoria', 'Categoria:') }}
       {{ Form::text('categoria', $articulo->categoria, array('class' => 'form-control'))}}
       {{ Form::label('stock', 'Stock:') }}
@@ -25,3 +31,5 @@
     {!! Form::close() !!}
   </div>
 </div>
+
+@endsection

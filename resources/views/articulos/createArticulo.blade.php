@@ -22,14 +22,14 @@
       {{ Form::label('stock', 'Stock:') }}
       {{ Form::text('stock', null, array('class' => 'form-control')) }}
       {{ Form::label('proveedor_id', 'Proveedor:') }}
-      {{ Form::select('proveedor_id', $proveedores, array('class' => 'form-control')) }}
+      {{ Form::select('proveedor_id', $proveedores, null, array('class' => 'selectpicker')) }}
       {{ Form::label('marca_id', 'Marca:') }}
-      {{ Form::select('marca_id', $marcas, array('class' => 'form-control')) }}
+      {{ Form::select('marca_id', $marcas, null, array('class' => 'selectpicker')) }}
       {{ Form::label('familia_id', 'Familia:') }}
-      {{ Form::select('familia_id', $familias, array('class' => 'form-control', 'id' => 'familia_in_form', 'onchange' => 'changeSubfamilia(this.value)')) }}
+      {{ Form::select('familia_id', $familias, null, array('class' => 'selectpicker', 'id' => 'familia_in_form', 'onchange' => 'changeSubfamilia(this.value)')) }}
       <br>
         {{ Form::label('subfamilia_id', 'Subfamilia:') }}
-        {{ Form::select('subfamilia_id', $subfamilias, array('class' => 'form-control')) }}
+        {{ Form::select('subfamilia_id', $subfamilias, null, array('class' => 'selectpicker')) }}
       {{Form::submit('Guardar articulo', array('class'=>'btn btn-primary btn-lg btn-block', 'style'=>'margin-top:20px; margin-bottom:20px;'))}}
     {!! Form::close() !!}
 

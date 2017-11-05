@@ -1,12 +1,18 @@
+@extends('proveedoresNav')
+
+@section('navtab_2', 'class=active')
+
+@section('content-navtab')
+
 <div class='row'>
   <div class='col-md-8 col-md-offset-2'>
     <h3>Ingresar informacion del proveedor</h3>
     <hr>
     {!! Form::open(array('route' => ['proveedores.update', $proveedor->id], 'method' => 'put')) !!}
-      {{ Form::label('tipo_identificacion_Fiscal', 'tipo ident. fiscal:') }}
-      {{ Form::select('tipo_identificacion_Fiscal', $tipos_identificacion_fiscal, $proveedor->tipo_identificacion_fiscal, array('class' => 'form-control')) }}
+      {{ Form::label('tipo_identificacion_fiscal', 'tipo ident. fiscal:') }}
+      {{ Form::select('tipo_identificacion_fiscal', $tipos_identificacion_fiscal, $proveedor->tipo_identificacion_fiscal, array('class' => 'selectpicker')) }}
       {{ Form::label('numero_identificacion_Fiscal', 'Num. ident. fiscal:') }}
-      {{ Form::text('numero_identificacion_Fiscal', $proveedor->numero_identificacion_fiscal, array('class' => 'form-control')) }}
+      {{ Form::text('numero_identificacion_Fiscal', $proveedor->numero_identificacion_Fiscal, array('class' => 'form-control')) }}
       {{ Form::label('razon_social', 'Razon Social:') }}
       {{ Form::text('razon_social', $proveedor->razon_social, array('class' => 'form-control')) }}
       {{ Form::label('nombre_comercial', 'Nombre comercial:') }}
@@ -35,3 +41,5 @@
     {!! Form::close() !!}
   </div>
 </div>
+
+@endsection

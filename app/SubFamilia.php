@@ -16,4 +16,10 @@ class SubFamilia extends Model
     public function articulo(){
       return $this->hasMany('App\Articulo');
     }
+    public function delete(){
+
+      Articulo::where("subfamilia_id", $this->id)->delete();
+
+      return parent::delete();
+    }
 }

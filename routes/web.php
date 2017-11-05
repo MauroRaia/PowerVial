@@ -29,3 +29,4 @@ Route::get('/proveedoresNav', 'PagesController@proveedoresNav')->name('proveedor
 Route::get('/familiasNav', 'PagesController@familiasNav')->name('familiasNav');
 Route::post('articulo/find', 'ArticuloController@find')->name('articulos.find');
 Route::get('/marcasNav', 'PagesController@marcasNav')->name('marcasNav');
+Route::get('/editElement', 'PagesController@editElement')->name('editElement');

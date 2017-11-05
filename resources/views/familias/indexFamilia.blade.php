@@ -25,7 +25,7 @@
                 {{$subf->nombre}} |
               @endforeach
               </th>
-              <th class="col-xs-1"> <a href="{{ url('familias/'.$f->id) }}" target='_blank' class='btn btn-default'>Ver</a></th>
+              <th class="col-xs-1"> <a href="{{ url('familias/'.$f->id.'/edit') }}" class='btn btn-default'>Editar</a></th>
            </tr>
          @endforeach
         </tbody>

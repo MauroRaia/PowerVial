@@ -36,4 +36,8 @@ class PagesController extends Controller
   public function marcasNav(){
     return view ('/marcasNav');
   }
+
+  public function editElement(){
+    return view ('/editElements');
+  }
 }

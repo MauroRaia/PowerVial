@@ -29,7 +29,7 @@
           <th class="col-xs-2">{{ $p->movil }}</th>
           <th class="col-xs-2">{{ $p->email }}</th>
           <th class="col-xs-2">{{ $p->direccion_web }}</th>
-          <th class="col-xs-1"> <a href="{{ url('proveedores/'.$p->id) }}" target='_blank' class='btn btn-default'>Ver</a></th>
+          <th class="col-xs-1"> <a href="{{ url('proveedores/'.$p->id.'/edit') }}" class='btn btn-default'>Editar</a></th>
         </tr>
       @endforeach
     </tbody>

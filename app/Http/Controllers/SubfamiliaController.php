@@ -17,7 +17,9 @@ class SubfamiliaController extends Controller
      */
     public function index()
     {
-        
+        $subf = SubFamilia::all();
+
+        return view('subfamilias.indexSubfamilia', ['subf' => $subf]);
     }
 
     /**
@@ -81,7 +83,7 @@ class SubfamiliaController extends Controller
       $subfamilia->fill($request->all());
       $subfamilia->save();
 
-      return redirect('/subfamilias/create');
+      return redirect('/subfamilias');
     }
 
     /**

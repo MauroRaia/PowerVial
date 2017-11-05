@@ -16,4 +16,10 @@ class Proveedor extends Model
     public function articulo(){
       return $this->hasMany('App\Articulo');
     }
+    public function delete(){
+
+      Articulo::where("proveedor_id", $this->id)->delete();
+
+      return parent::delete();
+    }
 }

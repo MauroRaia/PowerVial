@@ -22,23 +22,45 @@ class ArticuloController extends Controller
     public function index()
     {
 
-      $filtro = ['nombre' => 'Nombre',
+      $filtro = ['codigo' => 'Codigo',
                  'familia_id' => 'Familia',
-                 'codigo' => 'Codigo'
+                 'subfamilia_id' => 'Subfamilia',
+                 'descripcion' => 'Descripcion',
+                 'nombre' => 'Nombre'
                 ];
 
-      $articulos = Articulo::all();
+      $articulos = [];
       return view('articulos.indexArticulo', ['art' => $articulos, 'filtro' => $filtro]);
     }
 
 
     public function find(Request $request)
     {
-      $filtro = ['nombre' => 'Nombre',
+      $filtro = ['codigo' => 'Codigo',
                  'familia_id' => 'Familia',
-                 'codigo' => 'Codigo'
+                 'subfamilia_id' => 'Subfamilia',
+                 'descripcion' => 'Descripcion',
+                 'nombre' => 'Nombre'
                 ];
 
+      //Caso si se busca una descripcion, por cada elemento de Articulo,
+      //busco en su descripcion si contiene el string que le paso
+      if (($request->input('field')) == 'descripcion'){
+        $all = Articulo::all();
+        $strToFilter = $request->input('value');
+        $articulos = [];
+
+        foreach ($all as $a) {
+
+          if (strpos($a->descripcion, $strToFilter) !== false) {
+            array_push($articulos, $a);
+          } //end segundo if
+        }//end foreach
+        return view('articulos.indexArticulo', ['art' => $articulos, 'filtro' => $filtro]);
+      }//end primer if
+
+      //Caso si busco filtrar por familia, como paso el nombre, tengo que
+      //buscar el objeto en Familia que corresponde al nombre que le doy
       if (($request->input('field')) == 'familia_id') {
         $value = Familia::where('nombre', ($request->input('value')) )->first();
         $field = $request->input('field');
@@ -48,11 +70,27 @@ class ArticuloController extends Controller
         return view('articulos.indexArticulo', ['art' => $articulos, 'filtro' => $filtro]);
       }
 
-      $field = $request->input('field');
-      $value = $request->input('value');
-      $articulos = Articulo::where($field, $value)->get();
+      //Caso si busco filtrar por subfamilia, como paso el nombre, tengo que
+      //buscar el objeto en SubFamilia que corresponde al nombre que le doy
+      elseif (($request->input('field')) == 'subfamilia_id') {
+        $value = SubFamilia::where('nombre', ($request->input('value')) )->first();
+        $field = $request->input('field');
 
-      return view('articulos.indexArticulo', ['art' => $articulos, 'filtro' => $filtro]);
+        $articulos = Articulo::where($field, $value->id)->get();
+
+        return view('articulos.indexArticulo', ['art' => $articulos, 'filtro' => $filtro]);
+      }
+
+      //Caso en el que busco por cualquier otro campo
+      else {
+
+        $field = $request->input('field');
+        $value = $request->input('value');
+        $articulos = Articulo::where($field, $value)->get();
+
+        return view('articulos.indexArticulo', ['art' => $articulos, 'filtro' => $filtro]);
+      }
+
     }
 
     /**
@@ -132,7 +170,7 @@ class ArticuloController extends Controller
       $articulo->fill($request->all());
       $articulo->save();
 
-      return redirect('/articulos/create');
+      return redirect('/articulos');
     }
 
     /**

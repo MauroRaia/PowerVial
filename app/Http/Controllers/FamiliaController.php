@@ -28,7 +28,7 @@ class FamiliaController extends Controller
       $familia->fill($request->all());
       $familia->save();
 
-      return redirect('/familias/create');
+      return redirect('/familias');
     }
 
     public function destroy($id){
