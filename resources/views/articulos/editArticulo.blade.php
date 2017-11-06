@@ -8,11 +8,13 @@
   <div class='col-md-8 col-md-offset-2'>
     <h3>Editar informacion del articulo</h3>
     <hr>
-    {!! Form::open(array('route' => ['articulos.update', $articulo->id], 'method' => 'put')) !!}
+    {!! Form::open(array('route' => ['articulos.update', $articulo->id], 'method' => 'put', 'files' => true)) !!}
       {{ Form::label('codigo', 'Codigo:') }}
       {{ Form::text('codigo', $articulo->codigo, array('class' => 'form-control')) }}
       {{ Form::label('nombre', 'Nombre:') }}
       {{ Form::text('nombre', $articulo->nombre, array('class' => 'form-control')) }}
+      {{ Form::label('imagen', 'Cargar imagen del articulo:') }}
+      {{ Form::file('imagen') }}
       {{ Form::label('descripcion', 'Descripcion:') }}
       {{ Form::textarea('descripcion', $articulo->descripcion, array('class' => 'form-control', 'style' => 'height:100px')) }}
       {{ Form::label('categoria', 'Categoria:') }}

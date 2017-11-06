@@ -10,11 +10,13 @@
   <div class='col-md-8 col-md-offset-2'>
     <h3>Ingresar informacion del articulo</h3>
     <hr>
-    {!! Form::open(array('route' => 'articulos.store')) !!}
+    {!! Form::open(array('route' => 'articulos.store', 'files' => true)) !!}
       {{ Form::label('codigo', 'Codigo:') }}
       {{ Form::text('codigo', null, array('class' => 'form-control')) }}
       {{ Form::label('nombre', 'Nombre:') }}
       {{ Form::text('nombre', null, array('class' => 'form-control')) }}
+      {{ Form::label('imagen', 'Cargar imagen del articulo:') }}
+      {{ Form::file('imagen') }}
       {{ Form::label('descripcion', 'Descripcion:') }}
       {{ Form::textarea('descripcion', null, array('class' => 'form-control', 'style' => 'height:100px')) }}
       {{ Form::label('categoria', 'Categoria:') }}

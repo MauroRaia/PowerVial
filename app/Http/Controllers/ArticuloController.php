@@ -11,6 +11,8 @@ use App\Proveedor;
 use App\SubFamilia;
 use App\Marca;
 use Illuminate\Support\Facades\Schema;
+use Image;
+use Storage;
 
 class ArticuloController extends Controller
 {
@@ -121,8 +123,30 @@ class ArticuloController extends Controller
      */
     public function store(CrearArticuloRequest $request)
     {
-      $articulo = Articulo::create($request->all());
-
+      $articulo = new Articulo;
+      $articulo->codigo = $request->input('codigo');
+      $articulo->nombre = $request->input('nombre');
+      $articulo->descripcion = $request->input('descripcion');
+      $articulo->categoria = $request->input('categoria');
+      $articulo->stock = $request->input('stock');
+      $articulo->proveedor_id = $request->input('proveedor_id');
+      $articulo->marca_id = $request->input('marca_id');
+      $articulo->subfamilia_id = $request->input('subfamilia_id');
+      $articulo->familia_id = $request->input('familia_id');
+      
+      //guardar imagen
+      if($request->hasFile('imagen'){
+          $imagen = $request->file('imagen');
+          $filename = time() . '-' . $articulo->nombre . '.'
+                      $imagen->getClientOriginalExtension();
+          $location = public_path('images/articulos/' . $filename);
+          Image::make($imagen->resize(800,400)->save($location));
+          
+          $articulo->imagen = $filename;
+      }
+      
+      $articulo->save();
+      
       return redirect('/articulos/create');
     }
 
@@ -167,7 +191,32 @@ class ArticuloController extends Controller
     public function update(EditarArticuloRequest $request, $id)
     {
       $articulo = Articulo::find($id);
-      $articulo->fill($request->all());
+      $articulo->codigo = $request->input('codigo');
+      $articulo->nombre = $request->input('nombre');
+      $articulo->descripcion = $request->input('descripcion');
+      $articulo->categoria = $request->input('categoria');
+      $articulo->stock = $request->input('stock');
+      $articulo->proveedor_id = $request->input('proveedor_id');
+      $articulo->marca_id = $request->input('marca_id');
+      $articulo->subfamilia_id = $request->input('subfamilia_id');
+      $articulo->familia_id = $request->input('familia_id');
+      
+      //edicion imagen
+      if($request->imagen){
+          $imagen = $request->file('imagen');
+          $filename = time() . '-' . $articulo->nombre . '.'
+                      $imagen->getClientOriginalExtension();
+          $location = public_path('images/articulos/' . $filename);
+          Image::make($imagen->resize(800,400)->save($location));
+          $oldfilename = $articulo->imagen;
+          
+          //actualizo base
+          $articulo->imagen = $filename;
+          
+          //eliminar foto vieja
+          Storage::delete($oldfilename);
+      }
+          
       $articulo->save();
 
       return redirect('/articulos');
@@ -182,6 +231,7 @@ class ArticuloController extends Controller
     public function destroy($id)
     {
       $articulo = Articulo::find($id);
+      Storage::delete($articulo->imagen);
       $articulo->delete();
     }
 
