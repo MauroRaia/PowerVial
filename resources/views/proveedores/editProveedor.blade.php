@@ -11,8 +11,8 @@
     {!! Form::open(array('route' => ['proveedores.update', $proveedor->id], 'method' => 'put')) !!}
       {{ Form::label('tipo_identificacion_fiscal', 'tipo ident. fiscal:') }}
       {{ Form::select('tipo_identificacion_fiscal', $tipos_identificacion_fiscal, $proveedor->tipo_identificacion_fiscal, array('class' => 'selectpicker')) }}
-      {{ Form::label('numero_identificacion_Fiscal', 'Num. ident. fiscal:') }}
-      {{ Form::text('numero_identificacion_Fiscal', $proveedor->numero_identificacion_Fiscal, array('class' => 'form-control')) }}
+      {{ Form::label('numero_identificacion_fiscal', 'Num. ident. fiscal:') }}
+      {{ Form::text('numero_identificacion_fiscal', $proveedor->numero_identificacion_fiscal, array('class' => 'form-control')) }}
       {{ Form::label('razon_social', 'Razon Social:') }}
       {{ Form::text('razon_social', $proveedor->razon_social, array('class' => 'form-control')) }}
       {{ Form::label('nombre_comercial', 'Nombre comercial:') }}

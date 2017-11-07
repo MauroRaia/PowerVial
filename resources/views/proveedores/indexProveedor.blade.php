@@ -23,7 +23,7 @@
       @foreach ($prov as $p)
         <tr>
           <th class="col-xs-1">{{ $p->tipo_identificacion_fiscal}}</th>
-          <th class="col-xs-1">{{ $p->numero_identificacion_Fiscal }}</th>
+          <th class="col-xs-1">{{ $p->numero_identificacion_fiscal }}</th>
           <th class="col-xs-2">{{ $p->nombre_comercial }}</th>
           <th class="col-xs-2">{{ $p->telefono }}</th>
           <th class="col-xs-2">{{ $p->movil }}</th>

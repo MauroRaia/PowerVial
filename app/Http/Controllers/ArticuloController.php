@@ -139,7 +139,7 @@ class ArticuloController extends Controller
           $imagen = $request->file('imagen');
           $filename = time() . '-' . ($articulo->nombre) . '.' . $imagen->getClientOriginalExtension();
           $location = public_path('images/articulos/' . $filename);
-          Image::make($imagen->getRealPath())->resize(800, 600)->save($location);
+          Image::make($imagen->getRealPath())->resize(300, 300)->save($location);
 
           $articulo->imagen = $filename;
       }

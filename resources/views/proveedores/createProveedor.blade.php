@@ -9,10 +9,10 @@
     <h3>Ingresar informacion del proveedor</h3>
     <hr>
     {!! Form::open(array('route' => 'proveedores.store')) !!}
-      {{ Form::label('tipo_identificacion_Fiscal', 'Tipo ident. fiscal.:') }}
+      {{ Form::label('tipo_identificacion_fiscal', 'Tipo ident. fiscal.:') }}
       {{ Form::select('tipo_identificacion_fiscal', $tipos_identificacion_fiscal, array('class' => 'selectpicker')) }}
-      {{ Form::label('numero_identificacion_Fiscal', 'Num. ident. fiscal:') }}
-      {{ Form::text('numero_identificacion_Fiscal', null, array('class' => 'form-control')) }}
+      {{ Form::label('numero_identificacion_fiscal', 'Num. ident. fiscal:') }}
+      {{ Form::text('numero_identificacion_fiscal', null, array('class' => 'form-control')) }}
       {{ Form::label('razon_social', 'Razon Social:') }}
       {{ Form::text('razon_social', null, array('class' => 'form-control')) }}
       {{ Form::label('nombre_comercial', 'Nombre comercial:') }}

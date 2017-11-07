@@ -8,7 +8,7 @@ class Proveedor extends Model
 {
     protected $table = 'proveedores';
     protected $fillable = ['tipo_identificacion_fiscal',
-                           'numero_identificacion_Fiscal', 'razon_social',
+                           'numero_identificacion_fiscal', 'razon_social',
                            'nombre_comercial', 'domicilio', 'pais', 'provincia',
                            'localidad', 'codigo_postal', 'telefono', 'movil',
                            'fax', 'email', 'direccion_web'];
