@@ -8,6 +8,10 @@
     border-color: #0B3861; /*set the color you want here*/
 }
 
+.btn-load-image{
+
+}
+
 select.selectpicker{
   height: 35px;
   width: 100%;
@@ -97,7 +101,7 @@ body,html{
 
 		/*Allow main to be next to Nav*/
 		.main{
-			position: absolute;
+			position: auto;
 			width: calc(100% - 40px); /*keeps 100% minus nav size*/
 			margin-left: 40px;
 			float: right;

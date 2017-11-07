@@ -9,7 +9,7 @@ class Articulo extends Model
     protected $table = 'articulos';
     protected $fillable = ['codigo', 'nombre', 'descripcion', 'categoria',
                            'stock', 'proveedor_id', 'marca_id',
-                           'subfamilia_id', 'familia_id'];
+                           'subfamilia_id', 'familia_id', 'imagen'];
 
     public function marca(){
       return $this->belongsTo('App\Marca');

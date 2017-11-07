@@ -11,8 +11,8 @@ use App\Proveedor;
 use App\SubFamilia;
 use App\Marca;
 use Illuminate\Support\Facades\Schema;
-use Image;
 use Storage;
+use Intervention\Image\Facades\Image;
 
 class ArticuloController extends Controller
 {
@@ -133,20 +133,19 @@ class ArticuloController extends Controller
       $articulo->marca_id = $request->input('marca_id');
       $articulo->subfamilia_id = $request->input('subfamilia_id');
       $articulo->familia_id = $request->input('familia_id');
-      
+
       //guardar imagen
-      if($request->hasFile('imagen'){
+      if($request->hasFile('imagen')){
           $imagen = $request->file('imagen');
-          $filename = time() . '-' . $articulo->nombre . '.'
-                      $imagen->getClientOriginalExtension();
+          $filename = time() . '-' . ($articulo->nombre) . '.' . $imagen->getClientOriginalExtension();
           $location = public_path('images/articulos/' . $filename);
-          Image::make($imagen->resize(800,400)->save($location));
-          
+          Image::make($imagen->getRealPath())->resize(800, 600)->save($location);
+
           $articulo->imagen = $filename;
       }
-      
+
       $articulo->save();
-      
+
       return redirect('/articulos/create');
     }
 
@@ -200,23 +199,22 @@ class ArticuloController extends Controller
       $articulo->marca_id = $request->input('marca_id');
       $articulo->subfamilia_id = $request->input('subfamilia_id');
       $articulo->familia_id = $request->input('familia_id');
-      
+
       //edicion imagen
       if($request->imagen){
           $imagen = $request->file('imagen');
-          $filename = time() . '-' . $articulo->nombre . '.'
-                      $imagen->getClientOriginalExtension();
+          $filename = time() . '-' . $articulo->nombre . '.' . $imagen->getClientOriginalExtension();
           $location = public_path('images/articulos/' . $filename);
-          Image::make($imagen->resize(800,400)->save($location));
+          Image::make($imagen->getRealPath())->resize(800, 600)->save($location);
           $oldfilename = $articulo->imagen;
-          
+
           //actualizo base
           $articulo->imagen = $filename;
-          
+
           //eliminar foto vieja
           Storage::delete($oldfilename);
       }
-          
+
       $articulo->save();
 
       return redirect('/articulos');
