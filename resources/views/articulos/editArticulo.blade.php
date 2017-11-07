@@ -14,7 +14,7 @@
       {{ Form::label('nombre', 'Nombre:') }}
       {{ Form::text('nombre', $articulo->nombre, array('class' => 'form-control')) }}
       {{ Form::label('imagen', 'Cargar imagen del articulo:') }}
-      {{ Form::file('imagen', $articulo->imagen) }}
+      {{ Form::file('imagen') }}
       {{ Form::label('descripcion', 'Descripcion:') }}
       {{ Form::textarea('descripcion', $articulo->descripcion, array('class' => 'form-control', 'style' => 'height:100px')) }}
       {{ Form::label('categoria', 'Categoria:') }}
