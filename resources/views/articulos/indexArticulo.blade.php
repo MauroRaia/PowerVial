@@ -93,7 +93,7 @@
                         <div class="col-md-8">
 
                           <div class="well" style="height:300px; background-color:#191919;">
-                            <img src= "{{ asset('images/articulos/' . $a->imagen) }}"> 
+                            <img src= "{{ asset('images/articulos/' . $a->imagen) }}">
                           </div>
 
                         </div>

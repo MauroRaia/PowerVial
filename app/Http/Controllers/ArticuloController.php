@@ -124,15 +124,7 @@ class ArticuloController extends Controller
     public function store(CrearArticuloRequest $request)
     {
       $articulo = new Articulo;
-      $articulo->codigo = $request->input('codigo');
-      $articulo->nombre = $request->input('nombre');
-      $articulo->descripcion = $request->input('descripcion');
-      $articulo->categoria = $request->input('categoria');
-      $articulo->stock = $request->input('stock');
-      $articulo->proveedor_id = $request->input('proveedor_id');
-      $articulo->marca_id = $request->input('marca_id');
-      $articulo->subfamilia_id = $request->input('subfamilia_id');
-      $articulo->familia_id = $request->input('familia_id');
+      $articulo->fill($request->all());
 
       //guardar imagen
       if($request->hasFile('imagen')){
@@ -190,22 +182,14 @@ class ArticuloController extends Controller
     public function update(EditarArticuloRequest $request, $id)
     {
       $articulo = Articulo::find($id);
-      $articulo->codigo = $request->input('codigo');
-      $articulo->nombre = $request->input('nombre');
-      $articulo->descripcion = $request->input('descripcion');
-      $articulo->categoria = $request->input('categoria');
-      $articulo->stock = $request->input('stock');
-      $articulo->proveedor_id = $request->input('proveedor_id');
-      $articulo->marca_id = $request->input('marca_id');
-      $articulo->subfamilia_id = $request->input('subfamilia_id');
-      $articulo->familia_id = $request->input('familia_id');
+      $articulo->fill($request->all());
 
       //edicion imagen
       if($request->imagen){
           $imagen = $request->file('imagen');
           $filename = time() . '-' . $articulo->nombre . '.' . $imagen->getClientOriginalExtension();
           $location = public_path('images/articulos/' . $filename);
-          Image::make($imagen->getRealPath())->resize(800, 600)->save($location);
+          Image::make($imagen->getRealPath())->resize(300, 300)->save($location);
           $oldfilename = $articulo->imagen;
 
           //actualizo base

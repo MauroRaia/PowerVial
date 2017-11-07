@@ -33,7 +33,10 @@ class EditarArticuloRequest extends FormRequest
           'marca_id' => 'required',
           'subfamilia_id' => 'required',
           'familia_id' => 'required',
-          'imagen' => 'image'
+          'imagen' => 'image',
+          'precio_compra' => 'required|integer',
+          'precio_venta' => 'required|integer'
+
         ];
     }
 }
