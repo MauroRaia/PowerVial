@@ -122,32 +122,28 @@ class ArticuloController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CrearArticuloRequest $request)
-    {
-      $articulo = new Articulo;
-      $articulo->codigo = $request->input('codigo');
-      $articulo->nombre = $request->input('nombre');
-      $articulo->descripcion = $request->input('descripcion');
-      $articulo->categoria = $request->input('categoria');
-      $articulo->stock = $request->input('stock');
-      $articulo->proveedor_id = $request->input('proveedor_id');
-      $articulo->marca_id = $request->input('marca_id');
-      $articulo->subfamilia_id = $request->input('subfamilia_id');
-      $articulo->familia_id = $request->input('familia_id');
-
-      //guardar imagen
-      if($request->hasFile('imagen')){
-          $imagen = $request->file('imagen');
-          $filename = time() . '-' . ($articulo->nombre) . '.' . $imagen->getClientOriginalExtension();
-          $location = public_path('images/articulos/' . $filename);
-          Image::make($imagen->getRealPath())->resize(300, 300)->save($location);
-
-          $articulo->imagen = $filename;
-      }
-
-      $articulo->save();
-
-      return redirect('/articulos/create');
-    }
+     {
+       $articulo = new Articulo;
+       $articulo->fill($request->all());
+       //guardar imagen
+       if($request->hasFile('imagen')){
+           $imagen = $request->file('imagen');
+           $filename = time() . '-' . ($articulo->nombre) . '.' . $imagen->getClientOriginalExtension();
+           $location = public_path('images/articulos/' . $filename);
+           Image::make($imagen->getRealPath())->resize(300, 300)->save($location);
+           $articulo->imagen = $filename;
+       }
+       if($request->has('reemplazos')){
+           $codigos = $request->input('reemplazos');
+           $cod_array = explode(',', $codigos); //explode separa un string segun el
+                                                //primer parametro que le paso
+           foreach ($cod_array as $c) {
+             $articulo->add_reemplazo($c);
+           }
+       }
+       $articulo->save();
+       return redirect('/articulos/create');
+     }
 
     /**
      * Display the specified resource.
@@ -187,38 +183,25 @@ class ArticuloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EditarArticuloRequest $request, $id)
-    {
-      $articulo = Articulo::find($id);
-      $articulo->codigo = $request->input('codigo');
-      $articulo->nombre = $request->input('nombre');
-      $articulo->descripcion = $request->input('descripcion');
-      $articulo->categoria = $request->input('categoria');
-      $articulo->stock = $request->input('stock');
-      $articulo->proveedor_id = $request->input('proveedor_id');
-      $articulo->marca_id = $request->input('marca_id');
-      $articulo->subfamilia_id = $request->input('subfamilia_id');
-      $articulo->familia_id = $request->input('familia_id');
-
-      //edicion imagen
-      if($request->imagen){
-          $imagen = $request->file('imagen');
-          $filename = time() . '-' . $articulo->nombre . '.' . $imagen->getClientOriginalExtension();
-          $location = public_path('images/articulos/' . $filename);
-          Image::make($imagen->getRealPath())->resize(800, 600)->save($location);
-          $oldfilename = $articulo->imagen;
-
-          //actualizo base
-          $articulo->imagen = $filename;
-
-          //eliminar foto vieja
-          Storage::delete($oldfilename);
-      }
-
-      $articulo->save();
-
-      return redirect('/articulos');
-    }
+     public function update(EditarArticuloRequest $request, $id)
+     {
+       $articulo = Articulo::find($id);
+       $articulo->fill($request->all());
+       //edicion imagen
+       if($request->imagen){
+           $imagen = $request->file('imagen');
+           $filename = time() . '-' . $articulo->nombre . '.' . $imagen->getClientOriginalExtension();
+           $location = public_path('images/articulos/' . $filename);
+           Image::make($imagen->getRealPath())->resize(300, 300)->save($location);
+           $oldfilename = $articulo->imagen;
+           //actualizo base
+           $articulo->imagen = $filename;
+           //eliminar foto vieja
+           Storage::delete($oldfilename);
+       }
+       $articulo->save();
+       return redirect('/articulos');
+     }
 
     /**
      * Remove the specified resource from storage.

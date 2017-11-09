@@ -86,14 +86,20 @@
                       <li><p>Proveedor: {{$a->proveedor->nombre_comercial}}</p></li>
                       <li><p>Descripcion: {{$a->descripcion}}</p></li>
                       <li><p>Categoria: {{$a->categoria}}</p></li>
-                      <a type='button' href="{{ url('articulos/'.$a->id.'/edit') }}" class="btn btn-show btn-block">Editar</a>
+                      <li><p>Articulos que reemplaza:</p></li>
+                      <ul>
+                      @foreach ($a->mi_reemplazo as $r)
+                           <li><p>{{$r->codigo}} - {{$r->nombre}}</p></li>
+                      @endforeach
+                      </ul>
+                      <a type='button' href="{{ url('articulos/'.$a->id.'/edit') }}" class="btn btn-show btn-block" style="margin-bottom:20px;">Editar</a>
 
                       </div>
 
                         <div class="col-md-8">
 
                           <div class="well" style="height:300px; background-color:#191919;">
-                            <img src= "{{ asset('images/articulos/' . $a->imagen) }}"> 
+                            <img src= "{{ asset('images/articulos/' . $a->imagen) }}">
                           </div>
 
                         </div>
