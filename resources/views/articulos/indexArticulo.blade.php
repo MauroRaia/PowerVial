@@ -86,6 +86,13 @@
                       <li><p>Proveedor: {{$a->proveedor->nombre_comercial}}</p></li>
                       <li><p>Descripcion: {{$a->descripcion}}</p></li>
                       <li><p>Categoria: {{$a->categoria}}</p></li>
+                      <li><p>Articulos que reemplaza:</p></li>
+                      <ul>
+                      @foreach ($a->mi_reemplazo as $r)
+                           <li><p>{{$r->codigo}} - {{$r->nombre}}</p></li>
+                      @endforeach
+                      </ul>
+                      
                       <a type='button' href="{{ url('articulos/'.$a->id.'/edit') }}" class="btn btn-show btn-block">Editar</a>
 
                       </div>

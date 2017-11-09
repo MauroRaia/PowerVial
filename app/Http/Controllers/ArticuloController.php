@@ -136,6 +136,20 @@ class ArticuloController extends Controller
           $articulo->imagen = $filename;
       }
 
+      if($request->has('reemplazos')){
+
+
+          $codigos = $request->input('reemplazos');
+          $cod_array = explode(',', $codigos); //explode separa un string segun el
+                                               //primer parametro que le paso
+          foreach ($cod_array as $c) {
+
+            $articulo->add_reemplazo($c);
+
+          }
+
+      }
+
       $articulo->save();
 
       return redirect('/articulos/create');

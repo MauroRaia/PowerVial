@@ -29,6 +29,9 @@
       {{ Form::label('stock', 'Stock:') }}
       {{ Form::text('stock', null, array('class' => 'form-control')) }}
 
+      {{ Form::label('reemplazos', 'Articulos que reemplaza (ingresar codigo del producto separado por una coma):') }}
+      {{ Form::text('reemplazos', null, array('class' => 'form-control')) }}
+
       {{ Form::label('proveedor_id', 'Proveedor:') }}
       {{ Form::select('proveedor_id', $proveedores, null, array('class' => 'selectpicker')) }}
 

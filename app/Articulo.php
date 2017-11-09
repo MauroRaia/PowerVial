@@ -14,14 +14,38 @@ class Articulo extends Model
     public function marca(){
       return $this->belongsTo('App\Marca');
     }
+
     public function familia(){
       return $this->belongsTo('App\Familia');
     }
+
     public function subfamilia(){
       return $this->belongsTo('App\SubFamilia');
     }
+
     public function proveedor(){
       return $this->belongsTo('App\Proveedor');
     }
 
+    public function mi_reemplazo(){
+      return $this->belongsToMany('App\Articulo', 'articulo_reemplazo', 'articulo_id', 'reemplazo_id');
+    }
+    public function add_reemplazo($codigo)
+    {
+        $reemplazo = Articulo::where('codigo', $codigo)->get();
+        foreach ($reemplazo as $r) {
+          $this->mi_reemplazo()->attach($r->id);
+          $r->mi_reemplazo()->attach($this->id);
+        }
+
+    }
+    public function remove_friend($codigo)
+    {
+      $reemplazo = Articulo::where('codigo', $codigo)->get();
+      foreach ($reemplazo as $r) {
+        $this->mi_reemplazo()->detach($r->id);
+        $r->mi_reemplazo()->detach($this->id);
+      }
+    }
+    
 }
