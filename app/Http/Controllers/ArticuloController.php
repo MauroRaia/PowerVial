@@ -122,6 +122,7 @@ class ArticuloController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CrearArticuloRequest $request)
+
      {
        $articulo = new Articulo;
        $articulo->fill($request->all());
@@ -144,7 +145,6 @@ class ArticuloController extends Controller
        $articulo->save();
        return redirect('/articulos/create');
      }
-
     /**
      * Display the specified resource.
      *
@@ -183,6 +183,7 @@ class ArticuloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
      public function update(EditarArticuloRequest $request, $id)
      {
        $articulo = Articulo::find($id);

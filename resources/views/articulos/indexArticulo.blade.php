@@ -92,6 +92,7 @@
                            <li><p>{{$r->codigo}} - {{$r->nombre}}</p></li>
                       @endforeach
                       </ul>
+
                       <a type='button' href="{{ url('articulos/'.$a->id.'/edit') }}" class="btn btn-show btn-block" style="margin-bottom:20px;">Editar</a>
 
                       </div>
