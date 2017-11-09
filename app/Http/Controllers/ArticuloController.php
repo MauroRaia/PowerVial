@@ -125,7 +125,18 @@ class ArticuloController extends Controller
 
      {
        $articulo = new Articulo;
-       $articulo->fill($request->all());
+       $articulo->codigo = $request->input('codigo');
+       $articulo->nombre = $request->input('nombre');
+       $articulo->descripcion = $request->input('descripcion');
+       $articulo->categoria = $request->input('categoria');
+       $articulo->stock = $request->input('stock');
+       $articulo->proveedor_id = $request->input('proveedor_id');
+       $articulo->marca_id = $request->input('marca_id');
+       $articulo->subfamilia_id = $request->input('subfamilia_id');
+       $articulo->familia_id = $request->input('familia_id');
+       $articulo->precio_venta = $request->input('precio_venta');
+       $articulo->precio_compra = $request->input('precio_compra');
+
        //guardar imagen
        if($request->hasFile('imagen')){
            $imagen = $request->file('imagen');
@@ -134,6 +145,10 @@ class ArticuloController extends Controller
            Image::make($imagen->getRealPath())->resize(300, 300)->save($location);
            $articulo->imagen = $filename;
        }
+
+       $articulo->save(); //Se hace un save para que exista el objeto => tiene
+                          //una id => puedo relacionarlo con otros objetos
+
        if($request->has('reemplazos')){
            $codigos = $request->input('reemplazos');
            $cod_array = explode(',', $codigos); //explode separa un string segun el
@@ -142,6 +157,7 @@ class ArticuloController extends Controller
              $articulo->add_reemplazo($c);
            }
        }
+
        $articulo->save();
        return redirect('/articulos/create');
      }
@@ -169,11 +185,19 @@ class ArticuloController extends Controller
       $subfamilias = SubFamilia::pluck('nombre', 'id');
       $marcas = Marca::pluck('nombre', 'id');
       $articulo = Articulo::findOrFail($id);
+      $codigos = [];
+
+      foreach ($articulo->mi_reemplazo as $r) {
+        array_push($codigos, $r->codigo);
+      }
+
+      $codigos = implode(',',$codigos);
       return view('articulos.editArticulo', ['articulo' => $articulo,
                                              'proveedores' => $proveedores,
                                              'subfamilias' => $subfamilias,
                                              'familias' => $familias,
-                                             'marcas' => $marcas]);
+                                             'marcas' => $marcas,
+                                             'codigos' => $codigos]);
     }
 
     /**
@@ -187,7 +211,18 @@ class ArticuloController extends Controller
      public function update(EditarArticuloRequest $request, $id)
      {
        $articulo = Articulo::find($id);
-       $articulo->fill($request->all());
+       $articulo->codigo = $request->input('codigo');
+       $articulo->nombre = $request->input('nombre');
+       $articulo->descripcion = $request->input('descripcion');
+       $articulo->categoria = $request->input('categoria');
+       $articulo->stock = $request->input('stock');
+       $articulo->proveedor_id = $request->input('proveedor_id');
+       $articulo->marca_id = $request->input('marca_id');
+       $articulo->subfamilia_id = $request->input('subfamilia_id');
+       $articulo->familia_id = $request->input('familia_id');
+       $articulo->precio_venta = $request->input('precio_venta');
+       $articulo->precio_compra = $request->input('precio_compra');
+
        //edicion imagen
        if($request->imagen){
            $imagen = $request->file('imagen');
@@ -200,6 +235,25 @@ class ArticuloController extends Controller
            //eliminar foto vieja
            Storage::delete($oldfilename);
        }
+
+       $articulo->save(); //Se hace un save para que exista el objeto => tiene
+                          //una id => puedo relacionarlo con otros objetos
+
+       if($request->has('reemplazos')){
+
+           //Elimino los articulos que ya estaban relacionados con el articulo
+           foreach ($articulo->mi_reemplazo as $r) {
+             $articulo->remove_friend($r->codigo);
+           }
+
+           $codigos = $request->input('reemplazos');
+           $cod_array = explode(',', $codigos); //explode separa un string segun el
+                                                //primer parametro que le paso
+           foreach ($cod_array as $c) {
+             $articulo->add_reemplazo($c);
+           }
+       }
+
        $articulo->save();
        return redirect('/articulos');
      }

@@ -48,25 +48,4 @@ class Articulo extends Model
     }
 
 
-    public function mi_reemplazo(){
-      return $this->belongsToMany('App\Articulo', 'articulo_reemplazo', 'articulo_id', 'reemplazo_id');
-    }
-    public function add_reemplazo($codigo)
-    {
-        $reemplazo = Articulo::where('codigo', $codigo)->get();
-        foreach ($reemplazo as $r) {
-          $this->mi_reemplazo()->attach($r->id);
-          $r->mi_reemplazo()->attach($this->id);
-        }
-
-    }
-    public function remove_friend($codigo)
-    {
-      $reemplazo = Articulo::where('codigo', $codigo)->get();
-      foreach ($reemplazo as $r) {
-        $this->mi_reemplazo()->detach($r->id);
-        $r->mi_reemplazo()->detach($this->id);
-      }
-    }
-    
 }

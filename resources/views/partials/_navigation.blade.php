@@ -1,9 +1,9 @@
 
 <div class="container col-md-12">
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">PowerVial</a>
+          <a class="navbar-brand">PowerVial</a>
         </div>
         <ul class="nav navbar-nav">
           <li @yield('active_1')><a href="/articulos">Inventario</a></li>
@@ -14,4 +14,4 @@
         </ul>
       </div>
     </nav>
-<hr>
+<hr class="navigation">

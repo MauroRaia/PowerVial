@@ -39,9 +39,9 @@
 
 <div class='row'>
   <div class='col-md-12'>
-    <hr>
+    <hr class="content">
     <h3>Articulos</h3>
-    <hr>
+    <hr class="content">
       <table class='table table-hover table-bordered'>
         <thead>
           <th class="col-xs-1">Codigo</th>

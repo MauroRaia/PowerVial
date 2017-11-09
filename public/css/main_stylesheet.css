@@ -1,15 +1,50 @@
+body,html{
+		height: 100%;
+    background-color: #E5A430;
+	}
+
+.navbar-default{
+  background: #01010F;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #FAFAFA;
+}
+
+.navbar-default .navbar-brand {
+    color: #FAFAFA;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #FAFAFA;
+    background-color: #0B3861;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #FAFAFA;
+    background-color: #0B3861;
+}
+
+.well{
+  background-color: #01000E;
+  border-color: #FAFAFA;
+}
+
+.well-lg{
+    background-color: #000;
+}
+
 .btn-show{
   background-color: #0B3861;
   color: #FAFAFA;
 }
 .btn-show:hover, .btn-show:focus, .btn-show:active, .btn-show.active, .open>.dropdown-toggle.btn-show {
     color: #FAFAFA;
-    background-color: #191919;
+    background-color: #000;
     border-color: #0B3861; /*set the color you want here*/
-}
-
-.btn-load-image{
-
 }
 
 select.selectpicker{
@@ -27,14 +62,12 @@ select.selectpicker{
   border-color: #0B3861;
 }
 
-hr {
-    display: block;
-    margin-top: 0.5em;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: inset;
-    border-width: 1px;
+hr.navigation {
+  border-top: 3px double #000;
+}
+
+hr.content {
+  border-top: 3px double #F8F8F8;
 }
 
 h3{
@@ -64,22 +97,23 @@ label{
 .table{
   border-color: #0B3861;
 }
-
-body,html{
-		height: 100%;
-    background-color: #FAFAFA;
-	}
-
 	/* remove outer padding */
 	.main .row{
 		padding: 0px;
 		margin: 0px;
 	}
 
+
 	/*Remove rounded coners*/
 
 	nav.sidebar.navbar {
-		border-radius: 0px;
+    border-radius: 0px
+    border-color: #010101;
+    background-color: #0B3861;
+    border-bottom: 1px #FAFAFA solid;
+    border-top: 1px #FAFAFA solid;
+    border-left: 1px #FAFAFA solid;
+    border-right: 1px #FAFAFA solid;
 	}
 
 	nav.sidebar, .main{
@@ -121,6 +155,7 @@ body,html{
 			text-align: center;
 			width: 100%;
 			margin-left: 0px;
+      background-color: #01010F;
 		}
 
 		/*Center Icons*/
@@ -128,10 +163,34 @@ body,html{
 			padding-right: 13px;
 		}
 
+    nav.sidebar .navbar-brand{
+			border-bottom: 3px #000 solid;
+      background-color: #01010F;
+      color: #FAFAFA;
+		}
+
 		/*adds border to bottom nav boxes*/
 		nav.sidebar .navbar-nav > li{
 			border-bottom: 1px #191919 solid;
+      background-color: #01010F;
 		}
+
+    nav.sidebar .navbar-nav > li > a{
+      color: #FAFAFA;
+		}
+
+    nav.sidebar .navbar-nav > li > a:hover,
+    nav.sidebar .navbar-nav > li > a:focus {
+        color: #FAFAFA;
+        background-color: #0B3861;
+    }
+
+    nav.sidebar .navbar-nav > .active > a,
+    nav.sidebar .navbar-nav > .active > a:hover,
+    nav.sidebar .navbar-nav > .active > a:focus {
+        color: #FAFAFA;
+        background-color: #0B3861;
+    }
 
 		/*allows nav box to use 100% width*/
 		nav.sidebar .navbar-collapse, nav.sidebar .container-fluid{

@@ -7,8 +7,8 @@
   </head>
 <body>
 
-<div class="jumbotron">
-    <h1>Inicio</h1>
+<div class="logo">
+    <img src="{{ asset('images/jumbotron-image-2.jpg') }}" widht='1349' height='392' alt="">
 </div>
 
 @include('partials._navigation')

@@ -24,8 +24,17 @@
       {{ Form::label('categoria', 'Categoria:') }}
       {{ Form::text('categoria', $articulo->categoria, array('class' => 'form-control'))}}
 
+      {{ Form::label('reemplazos', 'Articulos que reemplaza (ingresar codigo del producto separado por una coma):') }}
+      {{ Form::text('reemplazos', $codigos, array('class' => 'form-control')) }}
+
       {{ Form::label('stock', 'Stock:') }}
       {{ Form::text('stock', $articulo->stock, array('class' => 'form-control')) }}
+
+      {{ Form::label('precio_compra', 'Precio de compra:') }}
+      {{ Form::text('precio_compra', $articulo->precio_compra, array('class' => 'form-control')) }}
+
+      {{ Form::label('precio_venta', 'Precio de venta:') }}
+      {{ Form::text('precio_venta', $articulo->precio_venta, array('class' => 'form-control')) }}
 
       {{ Form::label('proveedor_id', 'Proveedor:') }}
       {{ Form::select('proveedor_id', $proveedores,$articulo->proveedor_id, array('class' => 'form-control')) }}
@@ -38,12 +47,6 @@
 
       {{ Form::label('subfamilia_id', 'Subfamilia:') }}
       {{ Form::select('subfamilia_id', $subfamilias, $articulo->subfamilia_id, array('class' => 'form-control')) }}
-
-      {{ Form::label('precio_compra', 'Precio de compra:') }}
-      {{ Form::text('precio_compra', $articulo->precio_compra, array('class' => 'form-control')) }}
-
-      {{ Form::label('precio_venta', 'Precio de venta:') }}
-      {{ Form::text('precio_venta', $articulo->precio_venta, array('class' => 'form-control')) }}
 
       {{Form::submit('Guardar articulo', array('class'=>'btn btn-primary btn-lg btn-block', 'style'=>'margin-top:20px; margin-bottom:20px;'))}}
     {!! Form::close() !!}
