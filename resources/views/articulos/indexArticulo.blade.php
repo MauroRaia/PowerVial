@@ -4,6 +4,8 @@
 
 @section('content-navtab')
 
+@include('partials._messages')
+
 <div class="panel panel-default">
 
 <div class="panel-heading">Filtrar por</div>

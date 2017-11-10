@@ -39,4 +39,23 @@ class EditarArticuloRequest extends FormRequest
 
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'codigo.required' => 'el articulo debe tener un codigo',
+            'codigo.max' => 'el codigo no debe superar los 20 caracteres',
+            'nombre.required' => 'el articulo debe tener un nombre',
+            'nombre.max' => 'el nombre no debe superar los 50 caracteres',
+            'stock.required' => 'el articulo debe tener stock',
+            'proveedor_id.required' => 'el articulo debe tener un proveedor',
+            'marca_id.required' => 'el articulo debe tener una marca',
+            'familia_id.required' => 'el articulo debe pertenecer a una familia',
+            'imagen' => 'el archivo subido debe ser una imagen',
+            'precio_compra.required' => 'el articulo debe tener un precio de compra',
+            'precio_compra.integer' => 'el precio de compra debe ser un numero',
+            'precio_venta.required' => 'el articulo debe tener un precio de venta',
+            'precio_venta.integer' => 'el precio de venta debe ser un numero'
+          ];
+    }
 }

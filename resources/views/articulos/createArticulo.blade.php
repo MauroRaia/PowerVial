@@ -8,6 +8,7 @@
 
 <div class='row'>
   <div class='col-md-8 col-md-offset-2'>
+    @include('partials._messages')
     <h3>Ingresar informacion del articulo</h3>
     <hr>
     {!! Form::open(array('route' => 'articulos.store', 'files' => true)) !!}

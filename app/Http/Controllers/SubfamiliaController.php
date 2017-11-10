@@ -7,6 +7,7 @@ use App\Http\Requests\CrearSubfamiliaRequest;
 use App\Http\Requests\EditarSubfamiliaRequest;
 use App\SubFamilia;
 use App\Familia;
+use Session;
 
 class SubfamiliaController extends Controller
 {
@@ -44,6 +45,7 @@ class SubfamiliaController extends Controller
     {
       $subfamilia = Subfamilia::create($request->all());
 
+      Session::flash('success', 'La subfamilia se ha creado correctamente');
       return redirect('/subfamilias/create');
     }
 
@@ -83,6 +85,7 @@ class SubfamiliaController extends Controller
       $subfamilia->fill($request->all());
       $subfamilia->save();
 
+      Session::flash('success', 'La subfamilia se ha actualizado correctamente');
       return redirect('/subfamilias');
     }
 

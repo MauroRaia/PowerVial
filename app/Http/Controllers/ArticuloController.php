@@ -13,6 +13,7 @@ use App\Marca;
 use Illuminate\Support\Facades\Schema;
 use Storage;
 use Intervention\Image\Facades\Image;
+use Session;
 
 class ArticuloController extends Controller
 {
@@ -159,6 +160,8 @@ class ArticuloController extends Controller
        }
 
        $articulo->save();
+
+       Session::flash('success', 'El articulo se ha creado correctamente');
        return redirect('/articulos/create');
      }
     /**
@@ -255,6 +258,9 @@ class ArticuloController extends Controller
        }
 
        $articulo->save();
+
+       Session::flash('success', 'El articulo se ha actualizado correctamente');
+
        return redirect('/articulos');
      }
 
