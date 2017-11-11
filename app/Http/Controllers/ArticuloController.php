@@ -191,6 +191,7 @@ class ArticuloController extends Controller
         array_push($codigos, $r->codigo);
       }
 
+
       $codigos = implode(',',$codigos);
       return view('articulos.editArticulo', ['articulo' => $articulo,
                                              'proveedores' => $proveedores,
