@@ -6,6 +6,7 @@
 
 <div class='row'>
   <div class='col-md-8 col-md-offset-2'>
+    @include('partials._messages')
     <h3>Editar informacion del articulo</h3>
     <hr>
     {!! Form::open(array('route' => ['articulos.update', $articulo->id], 'method' => 'put', 'files' => true)) !!}

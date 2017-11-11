@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CrearFamiliaRequest;
 use App\Http\Requests\EditarFamiliaRequest;
 use App\Familia;
+use Session;
 
 class FamiliaController extends Controller
 {
@@ -16,6 +17,7 @@ class FamiliaController extends Controller
     public function store(CrearFamiliaRequest $request){
       $familia = Familia::create($request->all());
 
+      Session::flash('success', 'La familia se ha creado correctamente');
       return redirect('/familias/create');
     }
 
@@ -28,6 +30,7 @@ class FamiliaController extends Controller
       $familia->fill($request->all());
       $familia->save();
 
+      Session::flash('success', 'La familia se ha actualizado correctamente');
       return redirect('/familias');
     }
 

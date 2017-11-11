@@ -27,4 +27,13 @@ class EditarMarcasRequest extends FormRequest
             'nombre' => 'required|string|max:30'
         ];
     }
+
+    public function messages()
+    {
+      return [
+        'nombre.required' => 'la marca debe tener un nombre',
+        'nombre.max' => 'el nombre no debe superar los 30 caracteres'
+      ];
+    }
+    
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CrearProveedorRequest;
 use App\Http\Requests\EditarProveedorRequest;
 use App\Proveedor;
+use Session;
 
 class ProveedorController extends Controller
 {
@@ -42,6 +43,7 @@ class ProveedorController extends Controller
     {
         $proveedor = Proveedor::create($request->all());
 
+        Session::flash('success', 'El proveedor se ha creado correctamente');
         return redirect('/proveedoresNav');
     }
 
@@ -81,6 +83,7 @@ class ProveedorController extends Controller
       $proveedor->fill($request->all());
       $proveedor->save();
 
+      Session::flash('success', 'El proveedor se ha actualizado correctamente');
       return redirect('/proveedores');
     }
 

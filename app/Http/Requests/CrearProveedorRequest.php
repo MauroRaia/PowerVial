@@ -35,9 +35,30 @@ class CrearProveedorRequest extends FormRequest
           'codigo_postal' => 'required|min:0',
           'telefono' => 'required|string|max:15',
           'movil' => 'required|string|max:15',
-          'fax' => 'required',
+          'fax' => 'required|string|max:20',
           'email' => 'required|email',
           'direccion_web' => 'required|string|max:50'
          ];
     }
+
+    public function messages()
+    {
+        return [
+          'tipo_identificacion_fiscal.required' => 'un proveedor debe tener un tipo de ident. fiscal',
+          'numero_identificacion_fiscal.required' => 'un proveedor debe tener un numero de ident. fiscal',
+          'razon_social.required' => 'un proveedor debe tener una razon social',
+          'nombre_comercial.required' => 'un proveedor debe tener un nombre comercial',
+          'nombre_comercial.max' => 'el nombre comercial no debe superar los 100 caracteres',
+          'domicilio.max' => 'el domicilio no debe superar los 100 caracteres',
+          'pais.max' => 'el pais no debe superar los 75 caracteres',
+          'provincia.max' => 'la provincia no debe superar los 75 caracteres',
+          'codigo_postal.min' => 'codigo postal invalido: numero negativo',
+          'telefono.max' => 'el telefono no debe superar los 15 caracteres',
+          'movil.max' => 'el movil no debe superar los 15 caracteres',
+          'fax.max' => 'el fax no debe superar los 20 caracteres',
+          'email.email' => 'debe ingresar una direccion de email valida',
+          'direccion_web' => 'la direccion web no superar los 50 caracteres'
+        ];
+    }
+
 }

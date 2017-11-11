@@ -28,4 +28,14 @@ class EditarSubfamiliaRequest extends FormRequest
           'familia_id' => 'required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+          'nombre.required' => 'la subfamilia debe tener un nombre',
+          'nombre.max' => 'el nombre no debe superar los 50 caracteres',
+          'familia_id.required' => 'la subfamilia debe tener una familia'
+        ];
+    }
+
 }

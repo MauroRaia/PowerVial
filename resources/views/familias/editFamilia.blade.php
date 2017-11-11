@@ -1,5 +1,13 @@
+@extends('familiasNav')
+
+@section('navtab_2', 'class=active')
+
+@section('content-navtab')
+
+
 <div class='row'>
   <div class='col-md-8 col-md-offset-2'>
+    @include('partials._messages')
     <h3>Ingresar informacion de la familia</h3>
     <hr>
     {!! Form::open(array('route' => ['familias.update', $familia->id], 'method' => 'put')) !!}
@@ -9,3 +17,5 @@
     {!! Form::close() !!}
   </div>
 </div>
+
+@endsection
