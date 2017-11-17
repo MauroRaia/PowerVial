@@ -33,11 +33,11 @@ class EditarProveedorRequest extends FormRequest
           'provincia' => 'required|string|max:75',
           'localidad' => 'required|string|max:75',
           'codigo_postal' => 'required|min:0',
-          'telefono' => 'required|string|max:15',
-          'movil' => 'required|string|max:15',
-          'fax' => 'required|string|max:20',
+          'telefono' => 'max:15',
+          'movil' => 'max:15',
+          'fax' => 'max:20',
           'email' => 'required|email',
-          'direccion_web' => 'required|string|max:50'
+          'direccion_web' => 'max:50'
         ];
     }
 
@@ -57,7 +57,8 @@ class EditarProveedorRequest extends FormRequest
           'movil.max' => 'el movil no debe superar los 15 caracteres',
           'fax.max' => 'el fax no debe superar los 20 caracteres',
           'email.email' => 'debe ingresar una direccion de email valida',
-          'direccion_web' => 'la direccion web no superar los 50 caracteres'
+          'email.required' => 'un proveedor debe tener una direccion email',
+          'direccion_web.max' => 'la direccion web no superar los 50 caracteres'
         ];
     }
 

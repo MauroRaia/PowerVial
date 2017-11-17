@@ -38,6 +38,7 @@ class FamiliaController extends Controller
       $familia = Familia::find($id);
       $familia->delete();
 
+      Session::flash('success', 'La familia se ha eliminado correctamente');
       return redirect('/inventario');
     }
     public function index(){
