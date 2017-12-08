@@ -21,15 +21,18 @@ class CreateArticulosTable extends Migration
           $table->text('descripcion');
           $table->integer('categoria');
           $table->integer('stock');
-          $table->integer('proveedor_id')->unsigned();
+          $table->integer('proveedor_id')->unsigned()->nullable();
           $table->integer('marca_id')->unsigned();
           $table->integer('familia_id')->unsigned();
-          $table->integer('subfamilia_id')->unsigned();
+          $table->integer('subfamilia_id')->unsigned()->nullable();
 
-          $table->foreign('proveedor_id')->references('id')->on('proveedores');
-          $table->foreign('subfamilia_id')->references('id')->on('subfamilias');
-          $table->foreign('marca_id')->references('id')->on('marcas');
-          $table->foreign('familia_id')->references('id')->on('familias');
+          $table->foreign('proveedor_id')->references('id')->on('proveedores')->onDelete('set null')->onUpdate('cascade');
+
+          $table->foreign('subfamilia_id')->references('id')->on('subfamilias')->onDelete('set null')->onUpdate('cascade');
+
+          $table->foreign('marca_id')->references('id')->on('marcas')->onDelete('cascade')->onUpdate('cascade');
+
+          $table->foreign('familia_id')->references('id')->on('familias')->onDelete('cascade')->onUpdate('cascade');
 
       });
     }

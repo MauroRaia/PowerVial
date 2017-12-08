@@ -26,16 +26,16 @@
       {{ Form::textarea('descripcion', null, array('class' => 'form-control', 'style' => 'height:100px')) }}
 
       {{ Form::label('categoria', 'Categoria:') }}
-      {{ Form::text('categoria', null, array('class' => 'form-control'))}}
+      {{ Form::text('categoria', null, array('class' => 'form-control')) }}
 
       {{ Form::label('stock', 'Stock:') }}
       {{ Form::text('stock', null, array('class' => 'form-control')) }}
 
       {{ Form::label('precio_compra', 'Precio de compra:') }}
-      {{ Form::text('precio_compra', null, array('class' => 'form-control')) }}
+      {{ Form::text('precio_compra', 0, array('class' => 'form-control')) }}
 
       {{ Form::label('precio_venta', 'Precio de venta:') }}
-      {{ Form::text('precio_venta', null, array('class' => 'form-control')) }}
+      {{ Form::text('precio_venta', 0, array('class' => 'form-control')) }}
 
       {{ Form::label('reemplazos', 'Articulos que reemplaza (ingresar codigo del producto separado por una coma):') }}
       {{ Form::text('reemplazos', null, array('class' => 'form-control')) }}

@@ -29,7 +29,8 @@ class ArticuloController extends Controller
                  'familia_id' => 'Familia',
                  'subfamilia_id' => 'Subfamilia',
                  'descripcion' => 'Descripcion',
-                 'nombre' => 'Nombre'
+                 'nombre' => 'Nombre',
+                 'categoria' => 'Categoria'
                 ];
 
       $articulos = [];
@@ -43,7 +44,8 @@ class ArticuloController extends Controller
                  'familia_id' => 'Familia',
                  'subfamilia_id' => 'Subfamilia',
                  'descripcion' => 'Descripcion',
-                 'nombre' => 'Nombre'
+                 'nombre' => 'Nombre',
+                 'categoria' => 'Categoria'
                 ];
 
       //Caso si se busca una descripcion, por cada elemento de Articulo,
@@ -83,6 +85,22 @@ class ArticuloController extends Controller
 
         return view('articulos.indexArticulo', ['art' => $articulos, 'filtro' => $filtro]);
       }
+
+      //caso si busco filtrar por categoria, en cada articulo
+      //busco en su categoria si contiene el string que le paso
+      elseif (($request->input('field')) == 'categoria'){
+        $all = Articulo::all();
+        $strToFilter = $request->input('value');
+        $articulos = [];
+
+        foreach ($all as $a) {
+
+          if (strpos($a->categoria, $strToFilter) !== false) {
+            array_push($articulos, $a);
+          } //end segundo if
+        }//end foreach
+        return view('articulos.indexArticulo', ['art' => $articulos, 'filtro' => $filtro]);
+      }//end primer if
 
       //Caso en el que busco por cualquier otro campo
       else {

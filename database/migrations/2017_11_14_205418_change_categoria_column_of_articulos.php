@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPrecioCompraPrecioVentaColumnsToArticulos extends Migration
+class ChangeCategoriaColumnOfArticulos extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class AddPrecioCompraPrecioVentaColumnsToArticulos extends Migration
     public function up()
     {
         Schema::table('articulos', function (Blueprint $table) {
-            $table->integer('precio_compra')->default(0);
-            $table->integer('precio_venta')->default(0);
+            $table->string('categoria')->nullable()->change();
         });
     }
 
@@ -27,8 +26,7 @@ class AddPrecioCompraPrecioVentaColumnsToArticulos extends Migration
     public function down()
     {
         Schema::table('articulos', function (Blueprint $table) {
-            $table->dropColumn('precio_compra');
-            $table->dropColumn('precio_venta');
+            $table->integer('categoria')->nullable()->change();
         });
     }
 }

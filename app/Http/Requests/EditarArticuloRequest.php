@@ -32,6 +32,7 @@ class EditarArticuloRequest extends FormRequest
           'proveedor_id' => 'required',
           'marca_id' => 'required',
           'familia_id' => 'required',
+          'subfamilia_id' => 'required',
           'imagen' => 'image',
           'precio_compra' => 'required|integer|min:0',
           'precio_venta' => 'required|integer|min:0'
@@ -56,10 +57,10 @@ class EditarArticuloRequest extends FormRequest
           'imagen.image' => 'el archivo subido debe ser una imagen',
           'precio_compra.required' => 'el articulo debe tener un precio de compra',
           'precio_compra.integer' => 'el precio de compra debe ser un numero',
-          'precio_compra.min' => 'el precio de compra debe ser mayor a 0',
+          'precio_compra.min' => 'el precio de compra debe ser un numero mayor a 0',
           'precio_venta.required' => 'el articulo debe tener un precio de venta',
           'precio_venta.integer' => 'el precio de venta debe ser un numero',
-          'precio_venta.min' => 'el precio de venta debe ser mayor a 0'
+          'precio_venta.min' => 'el precio de venta debe ser un numero mayor a 0'
           ];
     }
 }

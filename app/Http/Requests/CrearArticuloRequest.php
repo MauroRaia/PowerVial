@@ -32,6 +32,7 @@ class CrearArticuloRequest extends FormRequest
           'proveedor_id' => 'required',
           'marca_id' => 'required',
           'familia_id' => 'required',
+          'subfamilia_id' => 'required',
           'imagen' => 'image',
           'precio_compra' => 'required|integer|min:0',
           'precio_venta' => 'required|integer|min:0'
@@ -50,6 +51,7 @@ class CrearArticuloRequest extends FormRequest
             'stock.required' => 'el articulo debe tener stock',
             'proveedor_id.required' => 'el articulo debe tener un proveedor',
             'marca_id.required' => 'el articulo debe tener una marca',
+            'subfamilia_id.required' => 'el articulo debe tener una subfamilia',
             'familia_id.required' => 'el articulo debe pertenecer a una familia',
             'imagen.image' => 'el archivo subido debe ser una imagen',
             'precio_compra.required' => 'el articulo debe tener un precio de compra',
@@ -58,6 +60,7 @@ class CrearArticuloRequest extends FormRequest
             'precio_venta.required' => 'el articulo debe tener un precio de venta',
             'precio_venta.integer' => 'el precio de venta debe ser un numero',
             'precio_venta.min' => 'el precio de venta debe ser mayor a 0'
+
           ];
     }
 

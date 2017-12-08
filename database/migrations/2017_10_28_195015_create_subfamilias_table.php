@@ -16,8 +16,8 @@ class CreateSubfamiliasTable extends Migration
           Schema::create('subfamilias', function (Blueprint $table) {
                   $table->increments('id');
                   $table->string('nombre', 30);
-                  $table->integer('familia_id')->unsigned();
-                  $table->foreign('familia_id')->references('id')->on('familias');
+                  $table->integer('familia_id')->unsigned()->nullable();
+                  $table->foreign('familia_id')->references('id')->on('familias')->onDelete('cascade')->onUpdate('cascade');
                   $table->timestamps();
         });
     }

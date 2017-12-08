@@ -3,6 +3,12 @@ body,html{
     background-color: #E5A430;
 	}
 
+
+	.bgimg {
+	    background-image: url('../images/jumbotron-image-2.jpg');
+			background-size:cover;
+	}
+
 .navbar-default{
   background: #01010F;
 }
