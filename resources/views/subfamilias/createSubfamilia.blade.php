@@ -13,8 +13,9 @@
     {!! Form::open(array('route' => 'subfamilias.store')) !!}
       {{ Form::label('nombre', 'Nombre:') }}
       {{ Form::text('nombre', null, array('class' => 'form-control')) }}
+      <br>
       {{ Form::label('familia_id', 'Familia:') }}
-      {{ Form::select('familia_id', $familias, array('class' => 'form-control')) }}
+      {{ Form::select('familia_id', $familias, null, array('class' => 'selectpicker')) }}
       {{Form::submit('Guardar subfamilia', array('class'=>'btn btn-primary btn-lg btn-block', 'style'=>'margin-top:20px; margin-bottom:20px;'))}}
     {!! Form::close() !!}
   </div>

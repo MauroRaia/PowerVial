@@ -99,5 +99,7 @@ class SubfamiliaController extends Controller
     {
       $subfamilia = Subfamilia::find($id);
       $subfamilia->delete();
+
+      return redirect('subfamilias');
     }
 }

@@ -38,19 +38,24 @@
       {{ Form::text('precio_venta', $articulo->precio_venta, array('class' => 'form-control')) }}
 
       {{ Form::label('proveedor_id', 'Proveedor:') }}
-      {{ Form::select('proveedor_id', $proveedores,$articulo->proveedor_id, array('class' => 'form-control')) }}
+      {{ Form::select('proveedor_id', $proveedores,$articulo->proveedor_id, array('class' => 'selectpicker')) }}
 
       {{ Form::label('marca_id', 'Marca:') }}
-      {{ Form::select('marca_id', $marcas, $articulo->marca_id, array('class' => 'form-control')) }}
+      {{ Form::select('marca_id', $marcas, $articulo->marca_id, array('class' => 'selectpicker')) }}
 
       {{ Form::label('familia_id', 'Familia:') }}
-      {{ Form::select('familia_id', $familias, $articulo->familia_id, array('class' => 'form-control')) }}
+      {{ Form::select('familia_id', $familias, $articulo->familia_id, array('class' => 'selectpicker')) }}
 
       {{ Form::label('subfamilia_id', 'Subfamilia:') }}
-      {{ Form::select('subfamilia_id', $subfamilias, $articulo->subfamilia_id, array('class' => 'form-control')) }}
+      {{ Form::select('subfamilia_id', $subfamilias, $articulo->subfamilia_id, array('class' => 'selectpicker')) }}
 
       {{Form::submit('Guardar articulo', array('class'=>'btn btn-primary btn-lg btn-block', 'style'=>'margin-top:20px; margin-bottom:20px;'))}}
     {!! Form::close() !!}
+
+    {!! Form::open(['url' => 'articulos/'.$articulo->id, 'method' => 'delete']) !!}
+    {{ Form::submit('Eliminar', array('class'=>'btn btn-primary btn-lg btn-block', 'style'=>'margin-top:20px; margin-bottom:20px;')) }}
+    {!! Form::close() !!}
+
   </div>
 </div>
 

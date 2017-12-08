@@ -49,9 +49,11 @@
           <th class="col-xs-1">Codigo</th>
           <th class="col-xs-1">Nombre</th>
           <th class="col-xs-1">Stock</th>
-          <th class="col-xs-2">Familia</th>
-          <th class="col-xs-2">Subfamilia</th>
-          <th class="col-xs-4">Descripcion</th>
+          <th class="col-xs-1">Familia</th>
+          <th class="col-xs-1">Subfamilia</th>
+          <th class="col-xs-2">Descripcion</th>
+          <th class="col-xs-1">Precio de compra</th>
+          <th class="col-xs-1">Precio de venta</th>
           <th class="col-xs-1"></th>
         </thead>
         <tbody>
@@ -60,13 +62,17 @@
           <th class="col-xs-1">{{ $a->codigo}}</th>
           <th class="col-xs-1">{{ $a->nombre }}</th>
           <th class="col-xs-1">{{ $a->stock }}</th>
-          <th class="col-xs-2">{{ $a->familia->nombre }}</th>
-          <th class="col-xs-2">{{ $a->subfamilia->nombre }}</th>
-          <th class="col-xs-4">{{ $a->descripcion }}</th>
-          <th class="col-xs-1"><button type="button" class="btn btn-show" data-toggle="modal" data-target="#myModal">Ver</button></th>
+          <th class="col-xs-1">{{ $a->familia->nombre }}</th>
+          <th class="col-xs-1">{{ $a->subfamilia->nombre }}</th>
+          <th class="col-xs-2">{{ $a->descripcion }}</th>
+          <th class="col-xs-1">{{ $a->precio_compra }}</th>
+          <th class="col-xs-1">{{ $a->precio_venta }}</th>
+          <th class="col-xs-1"><button type="button" class="btn btn-show" data-toggle="modal" data-target= {{"#myModal" . $a->id}} >Ver</button></th>
+
+
 
           <!-- Modal -->
-          <div id="myModal" class="modal fade" role="dialog">
+          <div id= {{ 'myModal' . $a->id}} class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
 
               <!-- Modal content-->
@@ -80,18 +86,20 @@
                       <div class="col-md-4">
 
 
-                      <li><p>Nombre: {{$a->nombre}}</p></li>
-                      <li><p>Stock: {{$a->stock}}</p></li>
-                      <li><p>Familia: {{$a->familia->nombre}}</p></li>
-                      <li><p>Subfamilia: {{$a->subfamilia->nombre}}</p></li>
-                      <li><p>Marca: {{$a->marca->nombre}}</p></li>
-                      <li><p>Proveedor: {{$a->proveedor->nombre_comercial}}</p></li>
-                      <li><p>Descripcion: {{$a->descripcion}}</p></li>
-                      <li><p>Categoria: {{$a->categoria}}</p></li>
+                      <li><p>Nombre: <span style="text-decoration:underline;">{{$a->nombre}}</span></p></li>
+                      <li><p>Stock: <span style="text-decoration:underline;">{{$a->stock}}</span></p></li>
+                      <li><p>Familia: <span style="text-decoration:underline;">{{$a->familia->nombre}}</span></p></li>
+                      <li><p>Subfamilia: <span style="text-decoration:underline;">{{$a->subfamilia->nombre}}</span></p></li>
+                      <li><p>Marca: <span style="text-decoration:underline;">{{$a->marca->nombre}}</span></p></li>
+                      <li><p>Proveedor: <span style="text-decoration:underline;">{{$a->proveedor->nombre_comercial}}</span></p></li>
+                      <li><p>Descripcion: <span style="text-decoration:underline;">{{$a->descripcion}}</span></p></li>
+                      <li><p>Categoria: <span style="text-decoration:underline;">{{$a->categoria}}</span></p></li>
+                      <li><p>Precio de compra: <span style="text-decoration:underline;">{{$a->precio_compra}}</span></p></li>
+                      <li><p>Precio de venta: <span style="text-decoration:underline;">{{$a->precio_venta}}</span></p></li>
                       <li><p>Articulos que reemplaza:</p></li>
                       <ul>
                       @foreach ($a->mi_reemplazo as $r)
-                           <li><p>{{$r->codigo}} - {{$r->nombre}}</p></li>
+                           <li><p><span style='text-decoration:underline;'>{{$r->codigo}} - {{$r->nombre}}</span></p></li>
                       @endforeach
                       </ul>
 
@@ -100,11 +108,7 @@
                       </div>
 
                         <div class="col-md-8">
-
-                          <div class="well" style="height:300px; background-color:#191919;">
                             <img src= "{{ asset('images/articulos/' . $a->imagen) }}">
-                          </div>
-
                         </div>
 
                   </div>

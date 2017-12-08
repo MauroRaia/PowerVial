@@ -275,7 +275,11 @@ class ArticuloController extends Controller
     {
       $articulo = Articulo::find($id);
       Storage::delete($articulo->imagen);
+
       $articulo->delete();
+
+      Session::flash('success', 'El articulo se ha eliminado correctamente');
+      return redirect('/articulos');
     }
 
     public function descontarStock($id, $cantidad){

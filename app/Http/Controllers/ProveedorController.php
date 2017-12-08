@@ -44,7 +44,7 @@ class ProveedorController extends Controller
         $proveedor = Proveedor::create($request->all());
 
         Session::flash('success', 'El proveedor se ha creado correctamente');
-        return redirect('/proveedoresNav');
+        return redirect('/proveedores/create');
     }
 
     /**
@@ -98,6 +98,7 @@ class ProveedorController extends Controller
       $proveedor = Proveedor::find($id);
       $proveedor->delete();
 
-      return redirect('inventario');
+      Session::flash('success', 'El proveedor se ha eliminado correctamente');
+      return redirect('/proveedores');
     }
 }

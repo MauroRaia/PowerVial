@@ -17,10 +17,12 @@ class CreateArticuloReemplazoTable extends Migration
             $table->increments('id');
 
             $table->integer('articulo_id')->unsigned()->nullable();
-            $table->foreign('articulo_id')->references('id')->on('articulos');
+            $table->foreign('articulo_id')->references('id')->on('articulos')
+                  ->onUpdate('cascade')->onDelete('cascade');
 
             $table->integer('reemplazo_id')->unsigned()->nullable();
-            $table->foreign('reemplazo_id')->references('id')->on('articulos');
+            $table->foreign('reemplazo_id')->references('id')->on('articulos')
+                  ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });

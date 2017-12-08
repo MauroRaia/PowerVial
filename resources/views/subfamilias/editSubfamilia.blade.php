@@ -16,6 +16,10 @@
       {{ Form::select('familia_id', $familias, $subfamilia->familia_id, array('class' => 'selectpicker')) }}
       {{Form::submit('Guardar subfamilia', array('class'=>'btn btn-primary btn-lg btn-block', 'style'=>'margin-top:20px; margin-bottom:20px;'))}}
     {!! Form::close() !!}
+
+    {!! Form::open(['url' => 'subfamilias/'.$subfamilia->id, 'method' => 'delete']) !!}
+    {{ Form::submit('Eliminar', array('class'=>'btn btn-primary btn-lg btn-block', 'style'=>'margin-top:20px; margin-bottom:20px;')) }}
+    {!! Form::close() !!}
   </div>
 </div>
 

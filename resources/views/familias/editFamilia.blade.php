@@ -15,6 +15,10 @@
       {{ Form::text('nombre', $familia->nombre, array('class' => 'form-control')) }}
       {{ Form::submit('Guardar familia', array('class'=>'btn btn-primary btn-lg btn-block', 'style'=>'margin-top:20px; margin-bottom:20px;')) }}
     {!! Form::close() !!}
+
+    {!! Form::open(['url' => 'familias/'.$familia->id, 'method' => 'delete']) !!}
+    {{ Form::submit('Eliminar', array('class'=>'btn btn-primary btn-lg btn-block', 'style'=>'margin-top:20px; margin-bottom:20px;')) }}
+    {!! Form::close() !!}
   </div>
 </div>
 
