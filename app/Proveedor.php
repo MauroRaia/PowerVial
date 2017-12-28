@@ -11,7 +11,7 @@ class Proveedor extends Model
                            'numero_identificacion_fiscal', 'razon_social',
                            'nombre_comercial', 'domicilio', 'pais', 'provincia',
                            'localidad', 'codigo_postal', 'telefono', 'movil',
-                           'fax', 'email', 'direccion_web'];
+                           'nombre_contacto', 'email', 'direccion_web'];
 
     public function articulo(){
       return $this->hasMany('App\Articulo');

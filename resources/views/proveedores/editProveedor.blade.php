@@ -32,8 +32,8 @@
       {{ Form::text('telefono', $proveedor->telefono, array('class' => 'form-control')) }}
       {{ Form::label('movil', 'Telefono movil:') }}
       {{ Form::text('movil', $proveedor->movil, array('class' => 'form-control')) }}
-      {{ Form::label('fax', 'Fax:') }}
-      {{ Form::text('fax', $proveedor->fax, array('class' => 'form-control')) }}
+      {{ Form::label('nombre_contacto', 'Nombre de contacto:') }}
+      {{ Form::text('nombre_contacto', $proveedor->fax, array('class' => 'form-control')) }}
       {{ Form::label('email', 'Email:') }}
       {{ Form::text('email', $proveedor->email, array('class' => 'form-control')) }}
       {{ Form::label('direccion_web', 'Direccion web:') }}

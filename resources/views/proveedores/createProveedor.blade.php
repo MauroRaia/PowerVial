@@ -32,8 +32,8 @@
       {{ Form::text('telefono', null, array('class' => 'form-control')) }}
       {{ Form::label('movil', 'Telefono movil:') }}
       {{ Form::text('movil', null, array('class' => 'form-control')) }}
-      {{ Form::label('fax', 'Fax:') }}
-      {{ Form::text('fax', null, array('class' => 'form-control')) }}
+      {{ Form::label('nombre_contacto', 'Nombre de contacto:') }}
+      {{ Form::text('nombre_contacto', null, array('class' => 'form-control')) }}
       {{ Form::label('email', 'Email:') }}
       {{ Form::text('email', null, array('class' => 'form-control')) }}
       {{ Form::label('direccion_web', 'Direccion web:') }}

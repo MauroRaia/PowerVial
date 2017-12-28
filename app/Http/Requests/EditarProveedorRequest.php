@@ -35,7 +35,7 @@ class EditarProveedorRequest extends FormRequest
           'codigo_postal' => 'required|min:0',
           'telefono' => 'max:15',
           'movil' => 'max:15',
-          'fax' => 'max:20',
+          'nombre_contacto' => 'max:100',
           'email' => 'required|email',
           'direccion_web' => 'max:50'
         ];
