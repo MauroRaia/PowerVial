@@ -14,7 +14,7 @@ class ChangeLengthOfNombreContacto extends Migration
     public function up()
     {
         Schema::table('proveedores', function (Blueprint $table) {
-            $table->string('nombre_contacto', 100);
+            $table->string('nombre_contacto', 100)->change();
         });
     }
 
@@ -26,7 +26,7 @@ class ChangeLengthOfNombreContacto extends Migration
     public function down()
     {
         Schema::table('proveedores', function (Blueprint $table) {
-            $table->string('nombre_contacto', 20);
+            $table->string('nombre_contacto', 20)->change();
         });
     }
 }

@@ -17,7 +17,7 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-      $proveedores = Proveedor::all();
+      $proveedores = Proveedor::orderBy('nombre_comercial')->get();
 
       return view('proveedores.indexProveedor', ['prov' => $proveedores]);
     }

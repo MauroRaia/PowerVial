@@ -14,7 +14,7 @@ class ChangeNameOfFaxColumnOfProveedoresToNombreContacto extends Migration
     public function up()
     {
         Schema::table('proveedores', function (Blueprint $table) {
-            $table->renameColumn('fax', 'nombre_contacto')
+            $table->renameColumn('fax', 'nombre_contacto');
         });
     }
 

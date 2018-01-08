@@ -33,7 +33,7 @@
       {{ Form::label('movil', 'Telefono movil:') }}
       {{ Form::text('movil', $proveedor->movil, array('class' => 'form-control')) }}
       {{ Form::label('nombre_contacto', 'Nombre de contacto:') }}
-      {{ Form::text('nombre_contacto', $proveedor->fax, array('class' => 'form-control')) }}
+      {{ Form::text('nombre_contacto', $proveedor->nombre_contacto, array('class' => 'form-control')) }}
       {{ Form::label('email', 'Email:') }}
       {{ Form::text('email', $proveedor->email, array('class' => 'form-control')) }}
       {{ Form::label('direccion_web', 'Direccion web:') }}
