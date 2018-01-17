@@ -34,7 +34,8 @@ class ArticuloController extends Controller
                 ];
 
       $articulos = [];
-      return view('articulos.indexArticulo', ['art' => $articulos, 'filtro' => $filtro]);
+      $ultimosArticulos = Articulo::orderBy('created_at', 'desc');
+      return view('articulos.indexArticulo', ['art' => $articulos, 'filtro' => $filtro, 'ultimosArticulos' => $ultimosArticulos]);
     }
 
 
@@ -150,7 +151,6 @@ class ArticuloController extends Controller
        $articulo->categoria = $request->input('categoria');
        $articulo->stock = $request->input('stock');
        $articulo->proveedor_id = $request->input('proveedor_id');
-       $articulo->marca_id = $request->input('marca_id');
        $articulo->subfamilia_id = $request->input('subfamilia_id');
        $articulo->familia_id = $request->input('familia_id');
        $articulo->precio_venta = $request->input('precio_venta');
@@ -239,7 +239,6 @@ class ArticuloController extends Controller
        $articulo->categoria = $request->input('categoria');
        $articulo->stock = $request->input('stock');
        $articulo->proveedor_id = $request->input('proveedor_id');
-       $articulo->marca_id = $request->input('marca_id');
        $articulo->subfamilia_id = $request->input('subfamilia_id');
        $articulo->familia_id = $request->input('familia_id');
        $articulo->precio_venta = $request->input('precio_venta');
